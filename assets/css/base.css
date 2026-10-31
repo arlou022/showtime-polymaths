@@ -1,0 +1,148 @@
+/* Polymath Journey: shared design tokens and base styles */
+
+:root {
+  --desk: #e7e4de;
+  --paper: #ffffff;
+  --ink: #1b1b1b;
+  --muted: #555451;
+  --faint: #8b8882;
+  --rule: #dcd8d0;
+  --accent: #1f4e8c;
+  --accent-soft: #edf2f9;
+  --warn: #8a5300;
+  --warn-soft: #fbf4e6;
+  --good: #2c6a39;
+  --good-soft: #ecf5ee;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .05), 0 10px 34px rgba(0, 0, 0, .09);
+
+  /* figure palette */
+  --fig-bg: #fbfaf7;
+  --fig-paper: #ffffff;
+  --fig-ink: #222222;
+  --fig-muted: #6f6c66;
+  --fig-faint: #c9c4ba;
+  --fig-grid: #ebe8e1;
+  --fig-pos: #c43d2f;
+  --fig-neg: #2a64b4;
+  --fig-neutral: #9b968d;
+  --fig-accent: #1f4e8c;
+  --fig-warm: #dd8a2c;
+  --fig-good: #2f8a4a;
+
+  --serif: "KaTeX_Main", "Latin Modern Roman", "CMU Serif", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --desk: #0f1012;
+    --paper: #1b1c20;
+    --ink: #e8e6e1;
+    --muted: #aeaba5;
+    --faint: #7f7c77;
+    --rule: #34353b;
+    --accent: #93b6ea;
+    --accent-soft: #1d2735;
+    --warn: #e6b86d;
+    --warn-soft: #2c2417;
+    --good: #93d3a2;
+    --good-soft: #1a281e;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 34px rgba(0, 0, 0, .45);
+    --fig-bg: #212227;
+    --fig-paper: #2a2b31;
+    --fig-ink: #e8e6e1;
+    --fig-muted: #a19e98;
+    --fig-faint: #55565d;
+    --fig-grid: #2d2e34;
+    --fig-pos: #ff7b6b;
+    --fig-neg: #6fa9ff;
+    --fig-neutral: #8f8b84;
+    --fig-accent: #93b6ea;
+    --fig-warm: #f0a24a;
+    --fig-good: #6fcf8a;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --desk: #0f1012;
+  --paper: #1b1c20;
+  --ink: #e8e6e1;
+  --muted: #aeaba5;
+  --faint: #7f7c77;
+  --rule: #34353b;
+  --accent: #93b6ea;
+  --accent-soft: #1d2735;
+  --warn: #e6b86d;
+  --warn-soft: #2c2417;
+  --good: #93d3a2;
+  --good-soft: #1a281e;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 34px rgba(0, 0, 0, .45);
+  --fig-bg: #212227;
+  --fig-paper: #2a2b31;
+  --fig-ink: #e8e6e1;
+  --fig-muted: #a19e98;
+  --fig-faint: #55565d;
+  --fig-grid: #2d2e34;
+  --fig-pos: #ff7b6b;
+  --fig-neg: #6fa9ff;
+  --fig-neutral: #8f8b84;
+  --fig-accent: #93b6ea;
+  --fig-warm: #f0a24a;
+  --fig-good: #6fcf8a;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--desk);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+.mono { font-family: var(--mono); }
+
+/* Top bar shared by hub + notes */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 14px 16px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+.crumbs { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; min-width: 0; }
+.crumbs a { color: var(--muted); }
+.crumbs a:hover { color: var(--ink); }
+.crumbs .sep { color: var(--faint); }
+.crumbs .here { color: var(--ink); }
+.tools { display: flex; gap: 8px; flex-shrink: 0; }
+
+.btn {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  line-height: 1.3;
+}
+.btn:hover { border-color: var(--faint); }
+.btn:focus-visible, .seg-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }

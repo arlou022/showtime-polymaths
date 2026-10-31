@@ -1,0 +1,44 @@
+/* Everything on the site, in one list.
+   To add a topic or chapter: add an entry here (status 'live' or 'soon').
+   hrefs are relative to the site root. */
+window.CATALOG = {
+  subjects: [
+    {
+      id: 'physics',
+      title: 'Physics',
+      blurb: 'How the universe works, from a single electron up to circuits, motion and light.',
+      href: 'physics/index.html',
+      status: 'live',
+      topics: [
+        {
+          id: 'electromagnetism',
+          title: 'Electromagnetism',
+          blurb: 'Charge, voltage, current and circuits, then magnetism and light.',
+          status: 'live',
+          chapters: [
+            { num: 1, title: 'From Charge to Ohm’s Law', href: 'physics/electromagnetism/ch01-charge-to-ohms-law.html', status: 'live', minutes: 30, figures: 8 },
+            { num: 2, title: 'Circuits: Series, Parallel and Kirchhoff’s Rules', status: 'soon' },
+            { num: 3, title: 'Magnetism from Moving Charge', status: 'soon' }
+          ]
+        },
+        { id: 'mechanics', title: 'Mechanics', blurb: 'Motion, forces, energy and momentum.', status: 'soon', chapters: [] },
+        { id: 'waves', title: 'Waves and Optics', blurb: 'Oscillations, sound, light and interference.', status: 'soon', chapters: [] },
+        { id: 'thermo', title: 'Thermodynamics', blurb: 'Heat, temperature, entropy and engines.', status: 'soon', chapters: [] }
+      ]
+    },
+    {
+      id: 'robotics',
+      title: 'Robotics',
+      blurb: 'Sensors, motors and control: making machines that sense and move.',
+      status: 'soon',
+      topics: []
+    },
+    {
+      id: 'ml',
+      title: 'Machine Learning',
+      blurb: 'From fitting a straight line to training neural networks.',
+      status: 'soon',
+      topics: []
+    }
+  ]
+};
