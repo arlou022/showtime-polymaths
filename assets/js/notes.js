@@ -89,18 +89,47 @@
     const inPage = document.querySelector('.contents ol');
     if (inPage) inPage.innerHTML = entries.map(e =>
       `<li><span class="n">${e.num}</span><a href="#${e.id}">${e.title}</a></li>`).join('');
+    // Stats strip: figure count fills itself in
+    document.querySelectorAll('[data-figcount]').forEach(el => {
+      el.textContent = String(page.querySelectorAll('figure.fig').length);
+    });
+
+    // Sidebar circuit trace + reading progress
     const side = document.querySelector('.toc ol');
-    if (side) {
-      side.innerHTML = entries.map(li).join('');
-      const links = [...side.querySelectorAll('a')];
-      const targets = entries.map(e => document.getElementById(e.id));
-      const onScroll = () => {
-        let active = 0;
-        targets.forEach((t, i) => { if (t && t.getBoundingClientRect().top < window.innerHeight * 0.3) active = i; });
-        links.forEach((l, i) => l.classList.toggle('active', i === active));
-      };
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-    }
+    if (side) side.innerHTML = entries.map(li).join('');
+    const items = side ? [...side.querySelectorAll('li')] : [];
+    const targets = entries.map(e => document.getElementById(e.id));
+    const progressEls = document.querySelectorAll('[data-progress]');
+    const bar = document.querySelector('.progress-bar');
+    const KEY = `pj-progress-${ch}`;
+    let furthest = -1;
+    try { furthest = Math.min(entries.length - 1, parseInt(localStorage.getItem(KEY), 10)); } catch (_) { /* storage blocked */ }
+    if (!Number.isFinite(furthest)) furthest = -1;
+
+    const update = () => {
+      let current = -1;
+      targets.forEach((t, i) => { if (t && t.getBoundingClientRect().top < window.innerHeight * 0.3) current = i; });
+      if (current > furthest) {
+        furthest = current;
+        try { localStorage.setItem(KEY, String(furthest)); } catch (_) { /* storage blocked */ }
+      }
+      items.forEach((item, i) => {
+        item.classList.toggle('read', i <= furthest);
+        item.classList.toggle('current', i === current);
+      });
+      if (side) {
+        const last = items[furthest];
+        side.style.setProperty('--trace', last ? `${last.offsetTop + 3}px` : '0px');
+      }
+      const done = Math.min(sections.length, furthest + 1);
+      progressEls.forEach(el => { el.textContent = `${done} / ${sections.length}`; });
+      if (bar) {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = `${max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0}%`;
+      }
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
   });
 })();

@@ -1,8 +1,8 @@
-# Polymath Journey
+# Showtime Polymaths
 
 Notes from first principles: physics, robotics, machine learning and whatever comes next. Each chapter is written from scratch and laid out like university course notes, with interactive figures you can play with.
 
-**Live site:** https://arlou022.github.io/polymath-journey/
+**Live site:** https://arlou022.github.io/showtime-polymaths/
 
 ## What's here
 - `index.html`: home page (subjects)

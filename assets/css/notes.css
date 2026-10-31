@@ -1,4 +1,4 @@
-/* Polymath Journey: the "uni course notes PDF" look */
+/* Showtime Polymaths: the "uni course notes PDF" look */
 
 .shell {
   display: grid;
@@ -24,15 +24,63 @@
   color: var(--muted);
   padding-top: 64px;
 }
-.toc-title { text-transform: uppercase; letter-spacing: .12em; font-size: 10.5px; color: var(--faint); margin-bottom: 10px; }
-.toc ol { list-style: none; margin: 0; padding: 0; }
-.toc li { margin: 0; }
-.toc a { display: flex; gap: 8px; padding: 4px 8px; border-left: 2px solid transparent; color: var(--muted); }
+.toc-title { text-transform: uppercase; letter-spacing: .12em; font-size: 10.5px; color: var(--faint); margin-bottom: 12px; }
+
+/* Circuit trace: a wire with one node per section; read sections light up */
+.toc ol {
+  --trace: 0px;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 20px;
+  position: relative;
+}
+.toc ol::before, .toc ol::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  width: 2px;
+  border-radius: 1px;
+}
+.toc ol::before { bottom: 10px; background: var(--rule); }
+.toc ol::after { height: var(--trace); background: var(--accent-bright); transition: height .35s ease; }
+.toc li { margin: 0; position: relative; }
+.toc li::before {
+  content: "";
+  position: absolute;
+  left: -19px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--fig-faint);
+  z-index: 1;
+  transition: background .25s, border-color .25s, box-shadow .25s;
+}
+.toc li.read::before { background: var(--accent-bright); border-color: var(--accent-bright); }
+.toc li.current::before { box-shadow: 0 0 0 4px var(--accent-soft); }
+.toc a { display: flex; gap: 8px; padding: 3px 6px 9px; color: var(--muted); }
 .toc a:hover { color: var(--ink); text-decoration: none; }
-.toc a.active { color: var(--ink); border-left-color: var(--accent); }
+.toc li.read a { color: var(--ink); }
+.toc li.current a { font-weight: 500; }
 .toc .n { color: var(--faint); min-width: 26px; }
+.toc li.read .n { color: var(--accent); }
+
+/* Slim reading-progress bar for narrow screens (sidebar hidden) */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0;
+  background: var(--accent-bright);
+  z-index: 50;
+  transition: width .3s ease;
+  display: none;
+}
 @media (max-width: 1239px) {
   .toc { display: none; }
+  .progress-bar { display: block; }
   .shell { grid-template-columns: minmax(0, 1fr); padding: 0 16px 48px; }
   .shell > .page { grid-column: 1; width: 100%; max-width: 840px; justify-self: center; }
 }
@@ -67,21 +115,43 @@
   font-size: 11.5px;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--accent);
 }
 .title-block h1 {
-  font-size: clamp(30px, 6vw, 42px);
-  line-height: 1.1;
-  font-weight: 400;
+  font-size: clamp(32px, 6vw, 46px);
+  line-height: 1.05;
+  font-weight: 600;
   margin: 10px 0 14px;
-  letter-spacing: -.01em;
+  letter-spacing: -.015em;
 }
-.standfirst { font-style: italic; font-size: 18px; color: var(--muted); margin: 0 0 18px; }
-.meta { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--mono); font-size: 11.5px; color: var(--faint); }
+.standfirst { font-style: italic; font-size: 18px; color: var(--muted); margin: 0 0 20px; }
+
+/* Stats strip (data-style summary under the title) */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.35;
+}
+.stats > div { padding: 8px 12px; border-left: 1px solid var(--rule); min-width: 0; }
+.stats > div:first-child { border-left: 0; }
+.stats .k { display: block; color: var(--muted); font-size: 11px; }
+.stats .v { display: block; color: var(--ink); font-weight: 500; }
+.stats .v.live { color: var(--accent); }
+@media (max-width: 520px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats > div:nth-child(3) { border-left: 0; }
+  .stats > div:nth-child(n+3) { border-top: 1px solid var(--rule); }
+}
 
 /* In-page contents (PDF style) */
 .contents { margin: 28px 0 8px; padding: 18px 0; border-top: .5px solid var(--rule); border-bottom: .5px solid var(--rule); }
-.contents h2 { font-size: 16px; margin: 0 0 8px; }
+.contents h2 { font-family: var(--sans); font-size: 15px; font-weight: 500; margin: 0 0 8px; }
+.contents a { color: var(--ink); }
+.contents a:hover { color: var(--accent); }
 .contents ol { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 32px; }
 .contents li { break-inside: avoid; font-size: 15px; display: flex; gap: 10px; padding: 1px 0; }
 .contents .n { min-width: 28px; color: var(--muted); }
@@ -97,15 +167,17 @@
 
 section.sec { margin-top: 44px; scroll-margin-top: 20px; }
 section.sec > h2, .end-matter > h2 {
-  font-size: 22px;
-  font-weight: 700;
+  font-family: var(--sans);
+  font-size: 21px;
+  font-weight: 500;
   line-height: 1.3;
+  letter-spacing: -.01em;
   margin: 0 0 16px;
   display: flex;
-  gap: 18px;
+  gap: 16px;
 }
-.sec-num { font-weight: 700; min-width: 2.2em; }
-h3 { font-size: 17px; font-weight: 700; margin: 26px 0 8px; }
+.sec-num { font-weight: 500; min-width: 2.2em; color: var(--accent); }
+h3 { font-family: var(--sans); font-size: 16.5px; font-weight: 500; margin: 26px 0 8px; }
 
 /* Display equations */
 .eq {
@@ -127,7 +199,7 @@ h3 { font-size: 17px; font-weight: 700; margin: 26px 0 8px; }
   margin: 22px 0;
   padding: 14px 18px 4px;
   border: 1px solid var(--rule);
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--accent-bright);
   background: var(--accent-soft);
 }
 .box p { text-align: left; }
@@ -144,13 +216,13 @@ h3 { font-size: 17px; font-weight: 700; margin: 26px 0 8px; }
 .box.careful .box-title { color: var(--warn); }
 .box.example { border-left-color: var(--good); background: var(--good-soft); }
 .box.example .box-title { color: var(--good); }
-.box.plain { background: transparent; border-left-color: var(--ink); }
-.box.plain .box-title { color: var(--ink); }
+.box.plain { background: var(--accent-soft); border-left-color: var(--accent-bright); }
+.box.plain .box-title { color: var(--accent); }
 
 /* Figures */
 .fig { margin: 30px -24px 30px; break-inside: avoid; }
 @media (max-width: 720px) { .fig { margin: 26px -8px; } }
-.fig-frame { background: var(--fig-bg); border: 1px solid var(--rule); border-radius: 3px; }
+.fig-frame { background: var(--fig-bg); border: 1px solid var(--rule); border-radius: 6px; }
 .fig-head, .fig-foot {
   display: flex;
   justify-content: space-between;
@@ -188,7 +260,7 @@ h3 { font-size: 17px; font-weight: 700; margin: 26px 0 8px; }
 .fig-controls:empty { display: none; }
 .ctl { display: inline-flex; align-items: center; gap: 8px; }
 .ctl-slider { flex: 1 1 220px; min-width: 0; }
-.ctl-slider input { flex: 1; min-width: 80px; accent-color: var(--accent); }
+.ctl-slider input { flex: 1; min-width: 80px; accent-color: var(--accent-bright); }
 .ctl-val { color: var(--ink); min-width: 4.5em; text-align: right; }
 .ctl-seg { gap: 0; }
 .ctl-seg .ctl-label { margin-right: 8px; }
@@ -243,12 +315,13 @@ details.q .answer p { margin: 0 0 .5em; text-align: left; }
 /* Print: real PDF-style output */
 @media print {
   html:root:not(#x) {
-    --desk: #fff; --paper: #fff; --ink: #000; --muted: #333; --faint: #666; --rule: #bbb;
-    --accent: #1f4e8c; --accent-soft: #f3f6fb; --warn: #8a5300; --warn-soft: #fbf6ec; --good: #2c6a39; --good-soft: #f1f7f2;
+    --desk: #fff; --desk-grid: #fff; --paper: #fff; --ink: #000; --muted: #333; --faint: #666; --rule: #bbb;
+    --accent: #7a4f0e; --accent-bright: #b7791f; --accent-soft: #fbf6ec; --warn: #8a3a28; --warn-soft: #fbf1ee; --good: #2c6a39; --good-soft: #f1f7f2;
     --fig-bg: #fff; --fig-ink: #222; --fig-muted: #555; --fig-faint: #bbb; --fig-grid: #eee;
   }
-  body { background: #fff; font-size: 11pt; }
-  .topbar, .toc, .fig-controls, .fig-hint, details.q summary .reveal, .next-up .pill { display: none !important; }
+  body { background: #fff; background-image: none; font-size: 11pt; }
+  .topbar, .toc, .progress-bar, .fig-controls, .fig-hint, details.q summary .reveal, .next-up .pill { display: none !important; }
+  .stats .v.live { color: var(--ink); }
   .shell { display: block; padding: 0; }
   .page { box-shadow: none; padding: 0; max-width: none; border: 0; }
   .fig, .box, .eq { break-inside: avoid; }
