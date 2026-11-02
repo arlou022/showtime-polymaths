@@ -131,5 +131,31 @@
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
     update();
+
+    // "Where does this come from?" notes: in the right-hand margin on wide screens,
+    // lined up with the element just before each note; tap-to-open inline otherwise.
+    const notes = [...page.querySelectorAll('details.why')];
+    const WIDE = window.matchMedia('(min-width: 1400px)');
+    const placeNotes = () => {
+      const wide = WIDE.matches;
+      page.classList.toggle('margin-notes', wide);
+      let lastBottom = -Infinity;
+      notes.forEach(n => {
+        if (!wide) { n.style.top = ''; return; }
+        n.open = true;
+        const anchor = n.previousElementSibling || n.parentElement;
+        let top = 0;
+        for (let el = anchor; el && el !== page; el = el.offsetParent) top += el.offsetTop;
+        top = Math.max(top, lastBottom + 16);
+        n.style.top = `${top}px`;
+        lastBottom = top + n.offsetHeight;
+      });
+    };
+    if (WIDE.addEventListener) WIDE.addEventListener('change', placeNotes);
+    window.addEventListener('resize', placeNotes);
+    window.addEventListener('load', placeNotes);
+    if ('ResizeObserver' in window) new ResizeObserver(placeNotes).observe(page);
+    placeNotes();
+    window.addEventListener('beforeprint', () => notes.forEach(n => { n.open = true; }));
   });
 })();

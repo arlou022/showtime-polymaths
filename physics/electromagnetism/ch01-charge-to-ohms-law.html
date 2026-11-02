@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Charge to Ohm's Law</title>
-<meta name="description" content="Showtime Polymaths · Physics · Electromagnetism · Chapter 1: atoms, charge, energy, voltage, conductors, current and Ohm's law, from scratch.">
+<meta name="description" content="Showtime Polymaths · Physics · Electromagnetism · Chapter 1: what electricity actually is, built from scratch: atoms, charge, energy, voltage, conductors, current and Ohm's law.">
 <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Showtime Polymaths">
 <meta property="og:title" content="From Charge to Ohm’s Law · Showtime Polymaths">
-<meta property="og:description" content="Electricity from scratch: atoms, charge, energy, voltage, conductors, current and Ohm’s law, with 8 interactive figures.">
+<meta property="og:description" content="So what actually is electricity? Built from scratch, with 8 interactive figures.">
 <meta name="twitter:card" content="summary">
 <script>try{var t=localStorage.getItem('pj-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="../../assets/css/base.css?v=2">
-<link rel="stylesheet" href="../../assets/css/notes.css?v=2">
+<link rel="stylesheet" href="../../assets/css/notes.css?v=3">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 <script defer src="../../assets/js/site.js?v=2"></script>
@@ -30,7 +30,7 @@
 <script defer src="../../assets/js/figures/materials.js?v=2"></script>
 <script defer src="../../assets/js/figures/current.js?v=2"></script>
 <script defer src="../../assets/js/figures/circuit.js?v=2"></script>
-<script defer src="../../assets/js/notes.js?v=2"></script>
+<script defer src="../../assets/js/notes.js?v=3"></script>
 </head>
 <body data-chapter="1">
 <div class="progress-bar" aria-hidden="true"></div>
@@ -59,17 +59,24 @@
     <div class="title-block">
       <div class="chapter-label">Chapter 1 · Electromagnetism</div>
       <h1>From Charge to Ohm’s Law</h1>
-      <p class="standfirst">What electricity actually is, built one layer at a time: atoms, charge, energy and voltage, then what happens when charge starts to flow.</p>
+      <p class="standfirst">So what actually is electricity? We build the answer from scratch, one layer at a time: atoms, charge, energy and voltage, then what happens when charge starts to flow.</p>
       <div class="stats" aria-label="Chapter at a glance">
         <div><span class="k">prerequisites</span><span class="v">none</span></div>
-        <div><span class="k">reading time</span><span class="v">≈ 30 min</span></div>
+        <div><span class="k">reading time</span><span class="v">≈ 35 min</span></div>
         <div><span class="k">interactive figures</span><span class="v" data-figcount>8</span></div>
         <div><span class="k">your progress</span><span class="v live" data-progress>0 / 8</span></div>
       </div>
     </div>
 
+    <div class="intro" id="intro">
+      <p class="hook">So what actually is electricity?</p>
+      <p>You hear about it all the time. Your phone’s on charge. You flick a switch and the light comes on. Data centres are now using so much of it that whole power grids are scrambling to keep up. It’s everywhere.</p>
+      <p>But if someone stopped you and asked what electricity actually <em>is</em> (what’s physically moving inside the wire, and why it can light a bulb), could you explain it? Most people can’t, and that’s completely normal. We use the words “volts” and “amps” without ever being shown what’s underneath them.</p>
+      <p>So that’s what this chapter does. We’ll build the whole picture from scratch, one layer at a time, starting with the smallest pieces of stuff there are. By the end, voltage, current and resistance will each mean something concrete you can picture. Every number and formula gets explained too: look for the yellow <strong>“Where does this come from?”</strong> notes.</p>
+    </div>
+
     <div class="box plain">
-      <span class="box-title">By the end of this chapter you should be able to</span>
+      <span class="box-title">By the end of this chapter you’ll be able to</span>
       <ul>
         <li>say what charge is, and why most things are electrically neutral;</li>
         <li>explain voltage as <em>energy per unit of charge</em>, with real numbers;</li>
@@ -86,14 +93,20 @@
     <!-- 1.1 -->
     <section class="sec" id="atoms">
       <h2>Atoms: what everything is made of</h2>
-      <p>Matter is made of atoms, and atoms are made of three kinds of particle:</p>
+      <p>Let’s start at the very bottom. Everything around you (your desk, the air, your phone, you) is made of <strong>atoms</strong>. And atoms are made of three kinds of even smaller particle:</p>
       <ul>
-        <li><strong>Proton</strong>: sits in the <span class="term">nucleus</span>, the tiny dense centre of the atom. It has a <strong>positive</strong> charge.</li>
-        <li><strong>Neutron</strong>: also in the nucleus. It has <strong>no</strong> charge.</li>
-        <li><strong>Electron</strong>: around the nucleus. It has a <strong>negative</strong> charge and is about 1,836 times lighter than a proton.</li>
+        <li><strong>Protons</strong> sit in the middle of the atom, in a tiny dense core called the <span class="term">nucleus</span>. They have a <strong>positive</strong> charge.</li>
+        <li><strong>Neutrons</strong> sit in the nucleus too. They have <strong>no</strong> charge at all.</li>
+        <li><strong>Electrons</strong> buzz around the outside. They have a <strong>negative</strong> charge, and they’re tiny: about 1,836 times lighter than a proton.</li>
       </ul>
-      <p>A normal atom has equal numbers of protons and electrons, so its charges cancel and it is <strong>neutral</strong> overall. If it loses or gains an electron, the balance tips and the atom has a net charge. We call it an <span class="term">ion</span>.</p>
-      <p>Protons are locked inside the nucleus and almost never move about. In everyday electricity it is always the <em>electrons</em> that move. Hold on to that thought: it is the whole story of this chapter.</p>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">How do we know electrons are 1,836× lighter?</span>
+        <p>Nobody can put an electron on a scale. Instead, physicists send particles through a magnetic field at the same speed and watch how much their paths curve. An electron and a proton carry the same amount of charge, so the field pushes them equally hard, and the lighter one bends far more.</p>
+        <p>Comparing the two bends gives the mass ratio: about 1,836. Today the masses are known very precisely: \(9.109 \times 10^{-31}\) kg for the electron and \(1.673 \times 10^{-27}\) kg for the proton.</p>
+      </details>
+      <p>Here’s the neat part. A normal atom has exactly as many electrons as protons, so the positives and negatives cancel out and the atom is <strong>neutral</strong> overall. That’s why your desk doesn’t zap you. But if an atom loses or gains an electron, the balance tips and it ends up with a net charge. We call that an <span class="term">ion</span>.</p>
+      <p>One more thing to hold on to: protons are locked inside the nucleus and basically never go anywhere. In everyday electricity, <em>it’s always the electrons that move</em>. That one idea is the whole story of this chapter.</p>
 
       <figure class="fig" id="fig-atom" data-figure="atom" data-height="300" data-label="A lithium atom with 3 protons, 4 neutrons and an adjustable number of electrons">
         <div class="fig-frame">
@@ -102,27 +115,38 @@
           <div class="fig-foot"><span class="fig-hint">hover a particle · add or remove electrons</span><span class="fig-readout"></span></div>
           <div class="fig-controls"></div>
         </div>
-        <figcaption>A lithium atom: 3 protons and 4 neutrons in the nucleus. With 3 electrons it is neutral. Remove one and it becomes a positive ion; add one and it becomes a negative ion. The nucleus never changes.</figcaption>
+        <figcaption>A lithium atom: 3 protons and 4 neutrons in the nucleus. With 3 electrons it’s neutral. Take one away and it becomes a positive ion; add one and it becomes a negative ion. Notice the nucleus never changes: only the electrons come and go.</figcaption>
       </figure>
 
       <div class="box careful">
-        <span class="box-title">Careful: this picture is not to scale</span>
-        <p>If the nucleus were the size of a pea, the whole atom would be roughly the size of a football stadium. Atoms are almost entirely empty space. And electrons don’t really follow neat circular tracks: quantum mechanics replaces “orbits” with fuzzy clouds of probability. The simple picture is perfectly good for everything in this chapter.</p>
+        <span class="box-title">Careful: this picture isn’t to scale</span>
+        <p>If the nucleus were the size of a pea, the whole atom would be about the size of a football stadium. Atoms are almost entirely empty space. And electrons don’t really travel in neat circles: quantum mechanics swaps “orbits” for fuzzy clouds of probability. The simple picture works perfectly well for everything in this chapter, though.</p>
       </div>
     </section>
 
     <!-- 1.2 -->
     <section class="sec" id="charge">
       <h2>Charge: the push and the pull</h2>
-      <p><strong>Charge is the property that makes particles push or pull on each other.</strong> That is honestly the most physics can say. Charge isn’t made of anything simpler; it is defined by how it behaves:</p>
+      <p>So what actually is this “charge” the protons and electrons are carrying? To answer that, it helps to go back to how people first noticed it.</p>
+      <p>Basically, back in the day (we’re talking ancient Greece), people spotted something odd. Rub a piece of amber with fur, and suddenly it starts pulling bits of straw and fluff towards it. The Greek word for amber was <em>ēlektron</em>, which is where our word “electricity” comes from.</p>
+      <p>Fast forward to the 1700s, and experimenters found it goes both ways. Some rubbed objects <em>attract</em> each other, and others <em>push each other away</em>. The French scientist Charles du Fay worked out that there must be two kinds of whatever was causing this. Benjamin Franklin later gave the two kinds the names we still use: <strong>positive</strong> and <strong>negative</strong>. And the property itself got a name too: <strong>charge</strong>.</p>
+      <p>Here’s the honest bit: that’s still pretty much where physics is today. Charge isn’t made of anything simpler. We know it by what it <em>does</em>:</p>
       <ul>
         <li><strong>Like charges repel</strong>: electron pushes electron, proton pushes proton.</li>
-        <li><strong>Opposite charges attract</strong>: an electron and a proton pull together.</li>
+        <li><strong>Opposite charges attract</strong>: an electron and a proton pull towards each other.</li>
         <li><strong>The force gets weaker with distance.</strong> Double the distance and the force drops to a quarter.</li>
       </ul>
-      <p>That last rule has a name, the <span class="term">inverse-square law</span>, and the full version is called Coulomb’s law:</p>
+      <p>That last rule has a name, the <span class="term">inverse-square law</span>, and when you write the whole thing out properly you get Coulomb’s law:</p>
       <div class="eq" id="eq-coulomb" data-words="force = (constant × charge 1 × charge 2) ÷ distance²">F = \dfrac{k\, q_1 q_2}{r^2}</div>
-      <p>Read it in words: the bigger the two charges \(q_1\) and \(q_2\), the bigger the force; and the force shrinks with the <em>square</em> of the distance \(r\). The \(k\) is just a constant that makes the units come out right (about \(9 \times 10^9\)). You don’t need to memorise it. The shape of the rule is what matters: 2× the distance gives ¼ of the force, and 3× the distance gives \(1/9\).</p>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Who came up with this, and why this shape?</span>
+        <p>In 1785 Charles-Augustin de Coulomb measured it directly. He hung a thin rod from a very fine wire and measured how far charged balls pushed it round at different distances. Halve the distance, and the twist was four times stronger.</p>
+        <p><strong>Why \(r^2\)?</strong> It’s geometry. A charge’s influence spreads out in every direction, like light from a bulb. At distance \(r\) it’s spread over a sphere of area \(4\pi r^2\). Double the distance and the same influence covers four times the area, so it’s a quarter as strong. Light and gravity fade the same way for the same reason.</p>
+        <p><strong>Why \(q_1 \times q_2\)?</strong> Double either charge and the force doubles, so the force is proportional to both.</p>
+        <p><strong>And \(k\)?</strong> It just converts “charge × charge ÷ distance²” into newtons. Its value, \(9 \times 10^9\), is so big because the coulomb is a huge amount of charge.</p>
+      </details>
+      <p>Read it in words: the bigger the two charges \(q_1\) and \(q_2\), the bigger the force. And the force shrinks with the <em>square</em> of the distance \(r\) between them. You don’t need to memorise anything else. The shape is what matters: 2× the distance gives ¼ of the force, 3× the distance gives \(1/9\).</p>
 
       <figure class="fig" id="fig-charges" data-figure="charges" data-height="300" data-label="Two draggable charges with force arrows obeying the inverse-square law">
         <div class="fig-frame">
@@ -131,13 +155,26 @@
           <div class="fig-foot"><span class="fig-hint">drag a charge to move it · tap it to flip its sign</span><span class="fig-readout"></span></div>
           <div class="fig-controls"></div>
         </div>
-        <figcaption>Two charges and the force each feels (arrows). Flip a sign to switch between attraction and repulsion. Snap to \(r = 1\), then \(r = 2\), and watch the arrows shrink to a quarter. The small graph on the right is the \(1/r^2\) curve.</figcaption>
+        <figcaption>Two charges and the force each one feels (the arrows). Flip a sign to switch between attracting and repelling. Try snapping to \(r = 1\), then \(r = 2\): the arrows shrink to a quarter. The little graph on the right is the \(1/r^2\) curve.</figcaption>
       </figure>
 
       <h3>How much charge?</h3>
-      <p>Every electron carries exactly the same amount of charge, called the <span class="term">elementary charge</span>:</p>
+      <p>In 1897 J.J. Thomson discovered the electron, and it turned out every single electron carries <em>exactly</em> the same amount of charge. It’s the smallest lump of charge you ever find on its own, and it’s called the <span class="term">elementary charge</span>:</p>
       <div class="eq" id="eq-e">e = 1.6 \times 10^{-19}\ \text{C}</div>
-      <p>The C stands for <strong>coulomb</strong>, the unit of charge. The coulomb is just a convenient human-sized unit: 1 coulomb is about 6.24 × 10¹⁸ electrons’ worth of charge (that is 6.24 billion billion). A proton carries exactly +\(e\) and an electron exactly −\(e\). That is why equal numbers of them cancel perfectly.</p>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">How did anyone measure something that tiny?</span>
+        <p>In 1909 Robert Millikan sprayed tiny oil droplets between two metal plates and switched on a voltage. By adjusting it until a droplet hovered (the electric push exactly balancing gravity), he could work out each droplet’s charge.</p>
+        <p>The charges were never random. They were always 1, 2, 3… times the same basic lump: about \(1.6 \times 10^{-19}\) C. That lump is the electron’s charge.</p>
+        <p>Since 2019 it isn’t even measured any more: the value \(1.602176634 \times 10^{-19}\) C is fixed exactly, and other units are defined from it.</p>
+      </details>
+      <p>The C stands for <strong>coulomb</strong>, the unit we measure charge in. It’s a convenient, human-sized unit: 1 coulomb is about 6.24 × 10¹⁸ electrons’ worth of charge, which is 6.24 billion billion. A proton carries exactly +\(e\) and an electron exactly −\(e\), which is why equal numbers of them cancel perfectly.</p>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Why exactly 6.24 × 10¹⁸ electrons?</span>
+        <p>Honestly, there’s nothing special about that number. The coulomb was chosen as a handy unit (via the amp: 1 coulomb is what flows when 1 amp runs for 1 second) long before anyone knew electrons existed.</p>
+        <p>So when the electron’s charge was finally measured, the number of electrons in one coulomb just came out as whatever it came out as: \(1 \div (1.602 \times 10^{-19}) \approx 6.24 \times 10^{18}\). It’s like asking why a foot isn’t a round number of atoms long.</p>
+      </details>
 
       <div class="box">
         <span class="box-title">Key idea</span>
@@ -148,10 +185,23 @@
     <!-- 1.3 -->
     <section class="sec" id="energy">
       <h2>Energy: the capacity to make things move</h2>
-      <p><strong>Energy is the capacity to make something move against a force.</strong> The precise version is that <em>work</em>, the energy you transfer, equals force times distance:</p>
+      <p>OK, so charges push and pull on each other. Before electricity can do anything useful, like lighting a bulb or spinning a motor, we need one more idea: <strong>energy</strong>.</p>
+      <p>Here’s the everyday version. <strong>Energy is what it takes to make something move against a force.</strong> Push a heavy box across the floor and you’re fighting friction the whole way; that effort is energy you’re handing over. The precise version is that the energy you transfer, called <em>work</em>, is force times distance:</p>
       <div class="eq" id="eq-work" data-words="work done = force × distance moved">W = F\,d</div>
-      <p>Push something with 1 newton for 1 metre and you have transferred <strong>1 joule</strong> of energy. (A newton is roughly the weight of a small apple, so lifting an apple one metre takes about one joule.)</p>
-      <p>Energy can be <em>stored</em> and released later: in a stretched spring, a lifted weight, or (as we are about to see) separated charges. And it is never created or destroyed, only moved around and converted from one form to another. As with charge, physics defines energy by what it does. Richard Feynman famously said that we don’t really know what energy <em>is</em>, only that when you add it all up, the total always stays the same.</p>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Why force × distance?</span>
+        <p>Common sense first: pushing twice as hard takes twice the effort, and so does pushing twice as far. So effort grows with both, which means multiplying them.</p>
+        <p>The deeper reason physicists picked exactly this quantity is that it’s the one that <em>balances the books</em>. Whatever force × distance you put in comes back out, exactly, as motion, height, heat or stored energy.</p>
+        <p>The unit is named after James Joule. In the 1840s he showed that a falling weight turning a paddle-wheel in water warms the water by the same amount every time. Work and heat are the same stuff.</p>
+      </details>
+      <p>Push something with 1 newton for 1 metre, and you’ve transferred <strong>1 joule</strong> of energy. (A newton is about the weight of a small apple, so lifting an apple one metre takes roughly one joule.)</p>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Why is a newton “about an apple”?</span>
+        <p>Weight is mass × the pull of gravity, which on Earth is about 9.8 newtons for every kilogram. A small apple is about 100 g, so its weight is \(0.1 \times 9.8 \approx 1\) N. (A nice coincidence, given the newton is named after Isaac Newton.)</p>
+      </details>
+      <p>Energy can also be <em>stored</em> and let out later: in a stretched spring, a weight lifted up high, or (as we’re about to see) charges pulled apart. And here’s the really important bit: energy is never created or destroyed. It only gets moved around and changed from one form to another. Physics actually defines energy by what it does, a bit like charge. Richard Feynman famously said we don’t really know what energy <em>is</em>, only that when you add it all up, the total always stays the same.</p>
 
       <figure class="fig" id="fig-work" data-figure="work" data-height="250" data-label="Push a block across the floor; the work done equals force times distance">
         <div class="fig-frame">
@@ -160,20 +210,21 @@
           <div class="fig-foot"><span class="fig-hint">drag the block, or press Push</span><span class="fig-readout"></span></div>
           <div class="fig-controls"></div>
         </div>
-        <figcaption>Choose how hard to push, then move the block. The energy you transfer grows with both the force and the distance. On a rough floor that energy isn’t lost: it turns into heat (the wavy lines).</figcaption>
+        <figcaption>Pick how hard to push, then move the box. The energy you hand over grows with both the force and the distance. On a rough floor it isn’t lost: it turns into heat (the wavy lines).</figcaption>
       </figure>
 
       <div class="box example">
         <span class="box-title">Worked example</span>
-        <p>You push a box 3 m across the floor with a steady 20 N. Work done \(= 20 \times 3 = 60\) J. Where did the 60 J go? On a rough floor, almost all of it became heat in the box and the floor. None of it vanished.</p>
+        <p>You push a box 3 m across the floor with a steady 20 N. Work done \(= 20 \times 3 = 60\) J. So where did those 60 J go? On a rough floor, almost all of it became heat in the box and the floor. None of it vanished.</p>
       </div>
     </section>
 
     <!-- 1.4 -->
     <section class="sec" id="together">
       <h2>Putting them together: an electron and a proton</h2>
-      <p>Now combine the two ideas. Pull an electron away from a proton. They attract, so you have to pull against that attraction over a distance. Force × distance = work done = <strong>energy stored in the separation</strong>. Let go, and the electron rushes back, releasing that energy.</p>
-      <p>This is exactly like lifting a weight. Lifting stores energy against gravity; dropping it releases that energy. <strong>Separated charges are electricity’s version of a lifted weight.</strong></p>
+      <p>Now let’s combine the two ideas, because this is where electricity really starts.</p>
+      <p>Picture an electron sitting right next to a proton. They attract, so if you want to pull the electron away, you have to fight that pull the whole way. Force × distance = work done = <strong>energy stored in the separation</strong>. Let go, and the electron rushes straight back, releasing all that energy.</p>
+      <p>If that sounds familiar, it should. It’s exactly like lifting a weight: lifting it stores energy against gravity, and dropping it releases that energy. <strong>Pulling charges apart is electricity’s version of lifting a weight.</strong></p>
 
       <figure class="fig" id="fig-pull" data-figure="pull" data-height="300" data-label="Drag an electron away from a proton to store energy, then release it">
         <div class="fig-frame">
@@ -182,27 +233,34 @@
           <div class="fig-foot"><span class="fig-hint">drag the electron away, then let go</span><span class="fig-readout"></span></div>
           <div class="fig-controls"></div>
         </div>
-        <figcaption>Pulling the electron away stores energy (blue bar). When you let go, that stored energy becomes motion (orange), and when the electron is recaptured it is given out as light and heat (green). The three always add up to the same total, the dashed line.</figcaption>
+        <figcaption>Pull the electron away and energy gets stored (blue bar). Let go, and that stored energy turns into motion (orange). When the electron is recaptured, it’s given out as light and heat (green). The three always add up to the same total: the dashed line.</figcaption>
       </figure>
 
-      <p>Notice one thing in the figure: the further you pull, the more energy is stored, but each extra step adds a little less. That is because the attraction gets weaker with distance (<a class="ref" href="#charge"></a>), so each extra centimetre takes less effort.</p>
+      <p>Try pulling it further and further in the figure, and you’ll notice something: each extra step stores a little <em>less</em> energy than the one before. That’s because the attraction gets weaker with distance (<a class="ref" href="#charge"></a>), so each extra centimetre is easier to pull.</p>
     </section>
 
     <!-- 1.5 -->
     <section class="sec" id="voltage">
       <h2>Voltage: energy per unit of charge</h2>
-      <p>A battery is a device that keeps charges separated, using chemistry to do the pulling. <strong>Voltage measures that stored energy, divided per unit of charge</strong>:</p>
+      <p>Now we can finally answer what a battery actually does. A battery is basically a charge-separating machine. It uses chemistry to do the pulling, keeping a crowd of electrons piled up at one end and a shortage at the other. Connect a wire, and those electrons can finally rush round and release the stored energy.</p>
+      <p><strong>Voltage is how we measure that stored energy, divided per unit of charge</strong>:</p>
       <div class="eq" id="eq-voltage" data-words="voltage = energy ÷ charge">V = \dfrac{W}{Q}</div>
-      <p>Its unit is the <strong>volt</strong>, and one volt is simply one joule per coulomb: 1 V = 1 J/C. Concrete values, using a 9 V battery:</p>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Why 9 volts, and where does “volt” come from?</span>
+        <p>The unit is named after Alessandro Volta, who built the first battery in 1800: a stack of zinc and copper discs separated by cloth soaked in salt water.</p>
+        <p>A battery’s voltage is set by its <em>chemistry</em>, by which metals and chemicals are reacting. A single standard cell gives about 1.5 V. A square 9 V battery is literally six 1.5 V cells stacked inside one case: \(6 \times 1.5 = 9\).</p>
+      </details>
+      <p>Its unit is the <strong>volt</strong>, and one volt is simply one joule per coulomb: 1 V = 1 J/C. Let’s make that concrete with a 9 V battery:</p>
       <ul>
-        <li>Between your 9 V battery’s terminals, <strong>each coulomb gives up 9 joules</strong> when it flows around the circuit.</li>
+        <li>Between your 9 V battery’s terminals, <strong>every coulomb gives up 9 joules</strong> as it flows round the circuit.</li>
         <li>One coulomb is 6.24 × 10¹⁸ electrons, so <strong>each single electron gives up</strong> 9 ÷ (6.24 × 10¹⁸) ≈ <strong>1.4 × 10⁻¹⁸ joules</strong>.</li>
       </ul>
-      <p>Dividing by charge is useful because it makes voltage a property of the <em>battery</em>, not of how much charge happens to flow. Whether 1 electron flows or a trillion, each one gets the same 9 V’s worth of energy per unit of charge.</p>
+      <p>Why bother dividing by charge? Because it makes voltage a property of the <em>battery</em>, not of how much charge happens to flow. Whether 1 electron goes round or a trillion, each one gets the same 9 V’s worth of energy per unit of charge.</p>
 
       <div class="box">
         <span class="box-title">Analogy: voltage is like height</span>
-        <p>A 9 V battery lifts each coulomb up a “9-joule hill”. Height tells you how much energy each kilogram of water gains by being up there; voltage tells you how much each coulomb gains. More water rolling down means more energy in total, but the energy <em>per kilogram</em> depends only on the height.</p>
+        <p>Think of a 9 V battery as lifting each coulomb up a “9-joule hill”. Height tells you how much energy each kilogram of water gains by being up there; voltage tells you how much each coulomb gains. More water rolling down means more energy in total, but the energy <em>per kilogram</em> depends only on the height.</p>
       </div>
 
       <figure class="fig" id="fig-battery" data-figure="battery" data-height="280" data-label="A battery and bulb circuit showing energy per coulomb and total energy">
@@ -212,18 +270,18 @@
           <div class="fig-foot"><span class="fig-hint">change the battery · change how much charge flows</span><span class="fig-readout"></span></div>
           <div class="fig-controls"></div>
         </div>
-        <figcaption>Each dot leaves the battery “charged up” (the halo) and hands its energy to the bulb. Changing <em>how much</em> charge flows changes the total energy, but not the energy per coulomb. Only a different battery changes that.</figcaption>
+        <figcaption>Each dot leaves the battery “charged up” (the halo) and hands its energy over at the bulb. Change <em>how much</em> charge flows and the total energy changes, but the energy per coulomb doesn’t. Only swapping the battery changes that.</figcaption>
       </figure>
 
-      <p>Rearranging <a class="ref" href="#eq-voltage"></a> gives the handy form \(W = VQ\): total energy = voltage × charge. Five coulombs through a 9 V battery deliver 45 J.</p>
+      <p>Flip <a class="ref" href="#eq-voltage"></a> round and you get a handy form: \(W = VQ\). Total energy = voltage × charge. So five coulombs through a 9 V battery deliver 45 J.</p>
     </section>
 
     <!-- 1.6 -->
     <section class="sec" id="conductors">
       <h2>Conductors and insulators: why copper but not plastic?</h2>
-      <p>The natural next layer is what happens inside a wire. Why can electrons move freely through a metal but not through plastic? It comes down to <strong>how tightly each atom holds on to its outermost electrons</strong>.</p>
-      <p><strong>In a metal like copper</strong>, each atom has one outer electron that is held only weakly. When billions of copper atoms pack together into a solid, those outer electrons stop belonging to any particular atom. They roam through the whole metal as a “sea” of free electrons, flowing around a fixed grid of positive ions (the atoms minus their outer electron). Because these electrons are already free to wander, the slightest push from a battery sets them all drifting in one direction. A material with free charges like this is a <span class="term">conductor</span>.</p>
-      <p><strong>In plastic</strong>, the electrons are locked into the chemical bonds that hold the atoms together. Each one is held tightly. Apply a voltage and they lean slightly towards the positive side, but they can’t leave. No free charges means no current: plastic is an <span class="term">insulator</span>.</p>
+      <p>So a battery pushes electrons round a wire. But hang on: why can electrons move through a copper wire, but not through the plastic coating around it? It all comes down to <strong>how tightly each atom holds on to its outermost electrons</strong>.</p>
+      <p><strong>In a metal like copper</strong>, each atom has one outer electron that it only holds on to loosely. When billions of copper atoms pack together into a solid, those outer electrons stop belonging to any particular atom. They roam through the whole metal as a “sea” of free electrons, drifting around a fixed grid of positive ions (the atoms minus their outer electron). Because they’re already free to wander, the slightest push from a battery gets them all drifting the same way. A material with free charges like this is called a <span class="term">conductor</span>.</p>
+      <p><strong>In plastic</strong>, it’s a completely different story. The electrons are locked into the chemical bonds holding the atoms together, and each one is held tight. Apply a voltage and they lean a little towards the positive side, but they can’t actually leave. No free charges means no current: plastic is an <span class="term">insulator</span>.</p>
 
       <figure class="fig" id="fig-materials" data-figure="materials" data-height="300" data-label="Copper with free electrons versus plastic with bound electrons">
         <div class="fig-frame">
@@ -232,23 +290,23 @@
           <div class="fig-foot"><span class="fig-hint">switch material · connect the battery</span><span class="fig-readout"></span></div>
           <div class="fig-controls"></div>
         </div>
-        <figcaption>Copper: free electrons dart about at random; connect the battery and the whole sea drifts towards the + side. That is a current. Plastic: every electron stays bound to its atom; the battery only makes them lean.</figcaption>
+        <figcaption>Copper: free electrons dart about at random; connect the battery and the whole sea starts drifting towards the + side. That drift is a current. Plastic: every electron stays bound to its atom, and the battery can only make them lean.</figcaption>
       </figure>
 
-      <p>That is exactly why electrical wires are copper wrapped in plastic. The copper carries the current, and the plastic stops it going anywhere it shouldn’t, such as into your hand.</p>
+      <p>And that’s exactly why electrical wires are copper wrapped in plastic. The copper carries the current, and the plastic stops it going anywhere it shouldn’t, like into your hand.</p>
 
       <div class="box careful">
         <span class="box-title">Careful: “insulator” means very hard, not impossible</span>
-        <p>A large enough voltage can rip electrons free even from an insulator. Lightning is exactly that, happening in air. And between conductors and insulators sit the <span class="term">semiconductors</span>, such as silicon, whose ability to conduct can be switched on and off. Computer chips are built from them.</p>
+        <p>Push hard enough, with a big enough voltage, and you can rip electrons free even from an insulator. Lightning is exactly that, happening in air. And somewhere in between conductors and insulators sit the <span class="term">semiconductors</span>, like silicon, whose ability to conduct can be switched on and off. Every computer chip is built from them.</p>
       </div>
     </section>
 
     <!-- 1.7 -->
     <section class="sec" id="current">
       <h2>Current: charge on the move</h2>
-      <p>When charges flow, the natural question is <em>how much flows per second</em>. That rate is the <strong>current</strong>:</p>
+      <p>Once charge is flowing, the natural question is: <em>how much</em> is flowing? Imagine standing at one spot on the wire and counting the charge that goes past you each second. That rate is the <strong>current</strong>:</p>
       <div class="eq" id="eq-current" data-words="current = charge ÷ time">I = \dfrac{Q}{t}</div>
-      <p>Current is measured in <strong>amperes</strong> (amps, A). One amp is one coulomb per second: about 6.24 × 10¹⁸ electrons passing any point in the wire every second. A phone charger supplies 1–2 A; a UK kettle draws about 13 A.</p>
+      <p>Current is measured in <strong>amperes</strong> (amps, A), named after the French physicist André-Marie Ampère. One amp is one coulomb per second, which is about 6.24 × 10¹⁸ electrons passing any point in the wire every single second. For a feel of the numbers: a phone charger supplies 1–2 A, and a UK kettle draws about 13 A.</p>
 
       <figure class="fig" id="fig-current" data-figure="current" data-height="250" data-label="Electrons drifting through a wire past a counting line">
         <div class="fig-frame">
@@ -257,30 +315,44 @@
           <div class="fig-foot"><span class="fig-hint">push harder · switch arrow convention</span><span class="fig-readout"></span></div>
           <div class="fig-controls"></div>
         </div>
-        <figcaption>Current is just counting: pick a line across the wire and count the charge that crosses it each second. Here each dot stands for 10¹⁸ electrons (0.16 C). Push harder and more dots cross per second, so the current rises.</figcaption>
+        <figcaption>Current really is just counting: pick a line across the wire and count the charge crossing it each second. Here each dot stands for 10¹⁸ electrons (0.16 C). Push harder and more dots cross per second, so the current goes up.</figcaption>
       </figure>
 
       <h3>Which way does current flow?</h3>
-      <p>This is a historical accident. In the 1700s Benjamin Franklin chose which kind of charge to call “positive”, more than a century before anyone discovered the electron (in 1897). His choice made the electron negative. So by convention, <strong>current is drawn flowing from + to −</strong>; this is called <span class="term">conventional current</span>. The electrons themselves, being negative, actually move the other way, from − to +. Both describe the same flow, and circuit diagrams use conventional current.</p>
+      <p>Remember Benjamin Franklin naming the two kinds of charge? This is where his choice comes back to bite. He picked which kind to call “positive” in the 1700s, well over a century before anyone discovered the electron. By pure bad luck, his choice made the electron the <em>negative</em> one.</p>
+      <p>So by convention, <strong>current is drawn flowing from + to −</strong>. That’s called <span class="term">conventional current</span>. But the electrons actually doing the moving are negative, so they really go the other way, from − to +. Both describe the same flow, and circuit diagrams still use Franklin’s convention.</p>
 
       <div class="box careful">
         <span class="box-title">Careful: electrons are slow</span>
-        <p>In a typical 1 mm² copper wire carrying 1 A, the electrons drift along at less than 0.1 mm per second, slower than a snail. Yet a light comes on the instant you flick the switch. The wire is already full of electrons, so the <em>push</em> travels down it at close to the speed of light, like pushing a tube already packed with marbles: one goes in and one pops out of the far end immediately.</p>
-        <p>And the energy isn’t carried inside the electrons like parcels on a conveyor belt. It actually travels through the electric and magnetic fields around the wire. We will come back to that when we reach magnetism.</p>
+        <p>In a typical 1 mm² copper wire carrying 1 A, the electrons drift along at less than 0.1 mm per second. That’s slower than a snail. So why does the light come on the instant you flick the switch? Because the wire is already full of electrons. The <em>push</em> travels down the wire at close to the speed of light, like pushing a tube that’s already packed with marbles: shove one in at one end, and one pops out the other end straight away.</p>
+        <p>And the energy isn’t carried inside the electrons like parcels on a conveyor belt either. It actually travels through the electric and magnetic fields around the wire. We’ll come back to that when we get to magnetism.</p>
       </div>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">How do we know they move under 0.1 mm/s?</span>
+        <p>You can work it out. Current = (free electrons per cubic metre) × (wire’s cross-section) × (charge per electron) × (drift speed).</p>
+        <p>Copper has about \(8.5 \times 10^{28}\) free electrons per cubic metre (one per atom). The wire is \(10^{-6}\) m², and each electron carries \(1.6 \times 10^{-19}\) C. For 1 A:</p>
+        <p>\(v = \dfrac{1}{8.5\times10^{28} \times 10^{-6} \times 1.6\times10^{-19}} \approx 7 \times 10^{-5}\) m/s, about 0.07 mm per second.</p>
+      </details>
     </section>
 
     <!-- 1.8 -->
     <section class="sec" id="ohm">
       <h2>Resistance and Ohm’s law</h2>
-      <p>As electrons drift through copper, they keep bumping into the vibrating ions of the metal. Each bump hands over some energy, making the ions vibrate more, and the wire heats up. This opposition to the flow is called <strong>resistance</strong>, \(R\), measured in <strong>ohms</strong> (Ω).</p>
-      <p>For many materials, including metals at a steady temperature, the current is proportional to the voltage: double the push and you get double the flow. That is <strong>Ohm’s law</strong>:</p>
+      <p>Last piece. As electrons drift through copper, they keep crashing into the metal’s ions, which are constantly jiggling about. Every crash hands over a bit of energy and makes the ions jiggle more, and that’s why wires warm up. This opposition to the flow is called <strong>resistance</strong>, \(R\), and it’s measured in <strong>ohms</strong> (Ω).</p>
+      <p>In the 1820s a German schoolteacher called Georg Ohm tested wires of different lengths, and noticed something simple. For a given wire, double the voltage and you get double the current. That’s <strong>Ohm’s law</strong>:</p>
       <div class="eq" id="eq-ohm" data-words="voltage = current × resistance">V = I\,R</div>
-      <p>It is the same rule written three ways: \(I = V/R\) (more voltage gives more current; more resistance gives less), and \(R = V/I\) (resistance is how many volts it takes to push each amp through).</p>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Why would current be proportional to voltage?</span>
+        <p>Ohm found it by experiment (published in 1827), but here’s why it works. The voltage creates a push on every free electron. Between crashes, each electron speeds up a little; then it hits an ion and loses that speed again.</p>
+        <p>The harder the push, the faster the average drift, and the drift is directly proportional to the push. Double the voltage, double the drift speed, double the current. Resistance just measures how much push it takes to get each amp flowing.</p>
+      </details>
+      <p>It’s the same rule written three ways: \(I = V/R\) (more voltage gives more current; more resistance gives less), and \(R = V/I\) (resistance is how many volts it takes to push each amp through).</p>
 
       <div class="box">
         <span class="box-title">Analogy: water in pipes</span>
-        <p>Voltage is like water pressure, current is like flow rate, and resistance is like how narrow the pipe is. More pressure gives more flow; a narrower pipe gives less flow at the same pressure.</p>
+        <p>Voltage is like water pressure, current is like the flow rate, and resistance is like how narrow the pipe is. More pressure gives more flow; a narrower pipe gives less flow at the same pressure.</p>
       </div>
 
       <figure class="fig" id="fig-circuit" data-figure="circuit" data-height="320" data-label="A battery and resistor circuit with an I-V graph">
@@ -290,28 +362,29 @@
           <div class="fig-foot"><span class="fig-hint">change the voltage and the resistance</span><span class="fig-readout"></span></div>
           <div class="fig-controls"></div>
         </div>
-        <figcaption>A battery driving current through a resistor. The electrons’ speed shows the current; the resistor glows with the heat it gives off. On the right, the I–V graph is a straight line through the origin, and its steepness is \(1/R\).</figcaption>
+        <figcaption>A battery pushing current through a resistor. How fast the electrons move shows the current; the resistor glows with the heat it gives off. On the right, the I–V graph is a straight line through zero, and its steepness is \(1/R\).</figcaption>
       </figure>
 
       <div class="box example">
         <span class="box-title">Worked example</span>
-        <p>A 9 V battery is connected across a 300 Ω resistor. Current \(I = V/R = 9/300 = 0.03\) A, which is 30 milliamps. Every second, 0.03 C flows, and each coulomb gives up 9 J, so 0.27 J of heat appears in the resistor every second. “Joules per second” has its own name, the <strong>watt</strong> (power), and it comes up properly in the next chapter.</p>
+        <p>A 9 V battery is connected across a 300 Ω resistor. Current \(I = V/R = 9/300 = 0.03\) A, which is 30 milliamps. Every second 0.03 C flows, and each coulomb gives up 9 J, so 0.27 J of heat appears in the resistor every second. “Joules per second” has its own name, the <strong>watt</strong> (power), and it comes up properly in the next chapter.</p>
       </div>
 
       <div class="box careful">
-        <span class="box-title">Careful: Ohm’s law isn’t universal</span>
-        <p>It is a property that some materials have, not a law of nature. A filament bulb’s resistance rises as it heats up, and a diode barely lets current through one way at all. A material that does obey it (an <span class="term">ohmic</span> conductor) gives a straight line through the origin on an I–V graph, exactly what <a class="ref" href="#fig-circuit"></a> draws.</p>
+        <span class="box-title">Careful: Ohm’s law isn’t a law of nature</span>
+        <p>It’s a property some materials have, not a rule everything follows. A filament bulb’s resistance rises as it heats up, and a diode barely lets current through in one direction at all. A material that does follow it (an <span class="term">ohmic</span> conductor) gives a straight line through zero on an I–V graph, exactly like <a class="ref" href="#fig-circuit"></a>.</p>
       </div>
     </section>
 
     <!-- Summary -->
     <section class="end-matter" id="summary">
       <h2>Summary</h2>
+      <p>So, what actually is electricity? <strong>It’s charge (almost always electrons) being pushed round a loop by stored energy, and handing that energy over as it goes.</strong> Here’s the whole picture, layer by layer:</p>
       <ul class="summary-list">
         <li>Atoms contain protons (+), neutrons (0) and electrons (−). Equal numbers of protons and electrons make an atom neutral.</li>
         <li>Charge comes in lumps of \(e = 1.6 \times 10^{-19}\) C. Like charges repel and opposites attract, with a force that falls off as \(1/r^2\).</li>
-        <li>Energy is the capacity to make things move against a force: \(W = Fd\). It is never created or destroyed.</li>
-        <li>Separating charges stores energy. <strong>Voltage is that energy per coulomb</strong>: \(V = W/Q\), and 1 V = 1 J/C.</li>
+        <li>Energy is the capacity to make things move against a force: \(W = Fd\). It’s never created or destroyed.</li>
+        <li>Pulling charges apart stores energy. <strong>Voltage is that energy per coulomb</strong>: \(V = W/Q\), and 1 V = 1 J/C.</li>
         <li>Metals have free electrons (conductors); plastics don’t (insulators).</li>
         <li>Current is charge per second, \(I = Q/t\). Electrons drift slowly from − to +; conventional current is drawn from + to −.</li>
         <li>Resistance opposes the flow and turns energy into heat. For ohmic conductors, \(V = IR\).</li>
@@ -321,20 +394,20 @@
     <!-- Questions -->
     <section class="end-matter" id="check">
       <h2>Check yourself</h2>
-      <details class="q"><summary><span class="qn">1.</span><span>An oxygen atom has 8 protons. Right now it has 10 electrons. What is its overall charge?</span><span class="reveal">show answer</span></summary>
-        <div class="answer"><p>8 − 10 = −2, so its charge is −2\(e\) = −3.2 × 10⁻¹⁹ C. It has gained two electrons, which makes it a negative ion.</p></div></details>
+      <details class="q"><summary><span class="qn">1.</span><span>An oxygen atom has 8 protons. Right now it has 10 electrons. What’s its overall charge?</span><span class="reveal">show answer</span></summary>
+        <div class="answer"><p>8 − 10 = −2, so its charge is −2\(e\) = −3.2 × 10⁻¹⁹ C. It’s gained two extra electrons, which makes it a negative ion.</p></div></details>
       <details class="q"><summary><span class="qn">2.</span><span>Two charges 3 cm apart push each other with some force. You move them to 6 cm apart. What happens to the force?</span><span class="reveal">show answer</span></summary>
-        <div class="answer"><p>The distance doubles, so the force drops to (½)² = ¼ of what it was (the inverse-square law).</p></div></details>
+        <div class="answer"><p>The distance doubles, so the force drops to (½)² = ¼ of what it was. That’s the inverse-square law.</p></div></details>
       <details class="q"><summary><span class="qn">3.</span><span>You push a sofa 4 m with a steady 50 N. How much work do you do?</span><span class="reveal">show answer</span></summary>
         <div class="answer"><p>\(W = Fd = 50 \times 4 = 200\) J.</p></div></details>
-      <details class="q"><summary><span class="qn">4.</span><span>A 12 V car battery pushes 3 C of charge around a circuit. How much energy is delivered?</span><span class="reveal">show answer</span></summary>
+      <details class="q"><summary><span class="qn">4.</span><span>A 12 V car battery pushes 3 C of charge round a circuit. How much energy does it deliver?</span><span class="reveal">show answer</span></summary>
         <div class="answer"><p>\(W = VQ = 12 \times 3 = 36\) J. Each coulomb carries 12 J, and there are three of them.</p></div></details>
-      <details class="q"><summary><span class="qn">5.</span><span>A current of 2 A flows for 10 seconds. How much charge passed, and roughly how many electrons is that?</span><span class="reveal">show answer</span></summary>
-        <div class="answer"><p>\(Q = It = 2 \times 10 = 20\) C. That is 20 × 6.24 × 10¹⁸ ≈ 1.25 × 10²⁰ electrons.</p></div></details>
+      <details class="q"><summary><span class="qn">5.</span><span>A current of 2 A flows for 10 seconds. How much charge went past, and roughly how many electrons is that?</span><span class="reveal">show answer</span></summary>
+        <div class="answer"><p>\(Q = It = 2 \times 10 = 20\) C. That’s 20 × 6.24 × 10¹⁸ ≈ 1.25 × 10²⁰ electrons.</p></div></details>
       <details class="q"><summary><span class="qn">6.</span><span>A 6 Ω resistor is connected to a 12 V supply. What current flows?</span><span class="reveal">show answer</span></summary>
         <div class="answer"><p>\(I = V/R = 12/6 = 2\) A.</p></div></details>
       <details class="q"><summary><span class="qn">7.</span><span>Why are electrical wires made of copper wrapped in plastic?</span><span class="reveal">show answer</span></summary>
-        <div class="answer"><p>Copper has free electrons, so it conducts. Plastic’s electrons are locked in bonds, so it insulates. The copper carries the current and the plastic keeps it safely inside the wire.</p></div></details>
+        <div class="answer"><p>Copper has free electrons, so it conducts. Plastic’s electrons are locked in its bonds, so it insulates. The copper carries the current, and the plastic keeps it safely inside the wire.</p></div></details>
 
       <div class="next-up">
         <div>
