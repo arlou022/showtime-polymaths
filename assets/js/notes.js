@@ -26,8 +26,9 @@
     });
 
     // Figures: Fig. 1.1, ...
+    const isArticle = document.body.hasAttribute('data-article');
     page.querySelectorAll('figure.fig').forEach((f, i) => {
-      const num = `${ch}.${i + 1}`;
+      const num = isArticle ? `${i + 1}` : `${ch}.${i + 1}`;
       f.dataset.num = num;
       const tag = f.querySelector('.fig-num');
       if (tag) tag.textContent = `Fig. ${num}`;

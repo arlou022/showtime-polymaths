@@ -40,5 +40,17 @@ window.CATALOG = {
       status: 'soon',
       topics: []
     }
+  ],
+
+  // News explainers, newest first. href is relative to the site root.
+  news: [
+    {
+      date: '2026-11-02',
+      title: 'China’s Recent AI Market Crash: What Does It Actually Mean?',
+      summary: 'China’s AI stocks lost about 40% in four months, yet the companies are mostly fine. What actually fell, and how a stock crash reaches people who’ve never bought a share.',
+      href: 'news/2026-11-02-china-ai-market-crash.html',
+      minutes: 6,
+      tag: 'Markets · AI'
+    }
   ]
 };

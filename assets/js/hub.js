@@ -43,11 +43,35 @@
     }).join('');
   }
 
+  const fmtDate = iso => new Date(iso + 'T12:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+
+  function newsList(el, root) {
+    const items = (window.CATALOG.news || []);
+    el.innerHTML = items.length ? items.map(n => `
+      <a class="news-item" href="${root}${n.href}">
+        <span class="news-meta">${esc(fmtDate(n.date))} · ${esc(n.tag || 'News')} · ${n.minutes} min read</span>
+        <span class="news-title">${esc(n.title)}</span>
+        <span class="news-summary">${esc(n.summary)}</span>
+        <span class="news-go">Read →</span>
+      </a>`).join('') : '<p class="empty">No posts yet.</p>';
+  }
+
+  function latest(el, root) {
+    const n = (window.CATALOG.news || [])[0];
+    if (!n) { el.remove(); return; }
+    el.innerHTML = `<span class="latest-label">Latest news</span>
+      <a href="${root}${n.href}"><span class="latest-date">${esc(fmtDate(n.date))}</span><span class="latest-title">${esc(n.title)}</span><span class="latest-go">→</span></a>`;
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     const root = document.body.dataset.root || '';
     const h = document.querySelector('[data-hub="home"]');
     if (h) home(h, root);
     const s = document.querySelector('[data-hub="subject"]');
     if (s) subject(s, root, s.dataset.subject);
+    const nl = document.querySelector('[data-hub="news"]');
+    if (nl) newsList(nl, root);
+    const lt = document.querySelector('[data-hub="latest"]');
+    if (lt) latest(lt, root);
   });
 })();

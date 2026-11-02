@@ -1,0 +1,52 @@
+/* Showtime Polymaths: news / explainer articles (builds on notes.css) */
+
+.article-meta { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.article-meta .pill { color: var(--ink); background: var(--accent-soft); border-color: transparent; }
+.article-lede { font-size: 19px; line-height: 1.6; }
+
+section.art { margin-top: 40px; }
+section.art > h2 {
+  font-family: var(--sans);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -.01em;
+  margin: 0 0 14px;
+}
+
+.steps { margin: 0 0 1em; padding-left: 1.6em; }
+.steps li { margin: .35em 0; padding-left: .2em; }
+.steps li::marker { color: var(--accent); font-family: var(--mono); font-size: .9em; }
+
+.takeaway {
+  margin: 26px 0;
+  padding: 16px 20px;
+  border-left: 3px solid var(--accent-bright);
+  background: var(--accent-soft);
+  font-size: 18px;
+  line-height: 1.55;
+}
+.takeaway p { margin: 0; text-align: left; }
+
+.disclaimer {
+  margin: 28px 0 0;
+  padding: 10px 14px;
+  border: 1px dashed var(--rule);
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.sources ol { margin: 0; padding-left: 1.4em; }
+.sources li { margin: .4em 0; font-size: 15px; }
+.sources .src-meta { color: var(--muted); }
+
+table.data { border-collapse: collapse; margin: 6px 0 18px; font-size: 15px; }
+table.data th, table.data td { border: 1px solid var(--rule); padding: 7px 14px; text-align: left; }
+table.data th { font-family: var(--mono); font-size: 11.5px; font-weight: 500; color: var(--muted); background: var(--accent-soft); }
+
+.print-only { display: none; }
+@media print {
+  .print-only { display: block; }
+  table.print-only { display: table; }
+  .fig.screen-only { display: none; }
+}
