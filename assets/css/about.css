@@ -1,0 +1,64 @@
+/* Showtime Polymaths: About Me page (builds on hub.css) */
+
+.about-hero { display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+.avatar {
+  width: 148px; height: 148px; flex: 0 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--accent-soft);
+  border: 3px solid var(--paper);
+  box-shadow: 0 0 0 1px var(--rule), 0 8px 24px rgba(20, 24, 30, .12);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 46px; font-weight: 600; color: var(--accent);
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.about-hero .who { flex: 1 1 320px; min-width: 0; }
+.about-hero h1 { margin-top: 8px; }
+
+.about-sec { margin-top: 44px; }
+.about-sec > h2 {
+  font-family: var(--sans);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -.01em;
+  margin: 0 0 14px;
+}
+.about-sec p { margin: 0 0 1em; line-height: 1.65; }
+.updated { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+/* Route: a circuit trace, matching the chapter sidebar */
+.route { list-style: none; margin: 8px 0 0; padding: 0 0 0 28px; position: relative; }
+.route::before { content: ""; position: absolute; left: 6px; top: 10px; bottom: 26px; width: 2px; background: var(--accent-bright); }
+.route li { position: relative; padding: 0 0 22px; }
+.route li::before {
+  content: ""; position: absolute; left: -28px; top: 6px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--accent-bright); border: 2px solid var(--accent-bright);
+  box-sizing: border-box;
+}
+.route li.now::before { box-shadow: 0 0 0 5px var(--accent-soft); }
+.route li.next::before { background: var(--paper); }
+.route li.next { padding-bottom: 0; }
+.route .when { display: block; font-family: var(--mono); font-size: 11.5px; color: var(--muted); }
+.route .what { display: block; font-size: 19px; font-weight: 600; line-height: 1.3; margin: 2px 0 4px; }
+.route .what small { font-family: var(--mono); font-size: 11.5px; font-weight: 400; color: var(--accent); margin-left: 6px; }
+.route .note { display: block; color: var(--muted); line-height: 1.55; }
+
+/* Bottlenecks grid */
+.bottlenecks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 18px 0 14px; }
+@media (max-width: 640px) { .bottlenecks { grid-template-columns: minmax(0, 1fr); } }
+.bn { border: 1px solid var(--rule); border-radius: 8px; padding: 16px 18px; background: var(--paper); }
+.bn .tag { font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.bn h3 { font-family: var(--sans); font-size: 17px; font-weight: 500; margin: 6px 0 6px; }
+.bn p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted); }
+.bn a { font-family: var(--mono); font-size: 12px; display: inline-block; margin-top: 8px; }
+
+.principles { margin: 0; padding-left: 1.2em; }
+.principles li { margin: .45em 0; line-height: 1.55; }
+
+.contact { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.contact a {
+  font-family: var(--mono); font-size: 13px;
+  border: 1px solid var(--rule); border-radius: 6px; padding: 8px 14px; color: var(--ink); background: var(--paper);
+}
+.contact a:hover { border-color: var(--accent-bright); text-decoration: none; }
