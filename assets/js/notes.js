@@ -102,7 +102,7 @@
     const targets = entries.map(e => document.getElementById(e.id));
     const progressEls = document.querySelectorAll('[data-progress]');
     const bar = document.querySelector('.progress-bar');
-    const KEY = `pj-progress-${ch}`;
+    const KEY = `pj-progress-${document.body.dataset.progressKey || ch}`;   // progressKey keeps chapters in different subjects apart
     let furthest = -1;
     try { furthest = Math.min(entries.length - 1, parseInt(localStorage.getItem(KEY), 10)); } catch (_) { /* storage blocked */ }
     if (!Number.isFinite(furthest)) furthest = -1;

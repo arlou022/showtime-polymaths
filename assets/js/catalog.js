@@ -27,6 +27,24 @@ window.CATALOG = {
       ]
     },
     {
+      id: 'energy',
+      title: 'Energy',
+      blurb: 'How electricity gets from power stations to plugs, and the grid that AI now depends on.',
+      href: 'energy/index.html',
+      status: 'live',
+      topics: [
+        {
+          id: 'grid',
+          title: 'The Grid',
+          blurb: 'Generators, transformers, pylons and plugs: how the electricity network actually works.',
+          status: 'live',
+          chapters: [
+            { num: 1, title: 'Why Does the Grid Run at 400,000 Volts?', href: 'energy/grid/ch01-why-400000-volts.html', status: 'live', minutes: 25, figures: 5 }
+          ]
+        }
+      ]
+    },
+    {
       id: 'robotics',
       title: 'Robotics',
       blurb: 'Sensors, motors and control: making machines that sense and move.',

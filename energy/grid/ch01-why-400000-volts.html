@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why 400,000 Volts?</title>
+<meta name="description" content="Showtime Polymaths · Energy · The Grid · Chapter 1: why the grid runs at 400,000 volts, from Faraday and the War of the Currents to transformers, heat loss and the 230 V at your socket.">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Showtime Polymaths">
+<meta property="og:title" content="Why Does the Grid Run at 400,000 Volts? · Showtime Polymaths">
+<meta property="og:description" content="230 V at your socket, 400,000 V on the pylons, 20,000 V at the power station. Why all the different numbers? With 5 interactive figures.">
+<meta name="twitter:card" content="summary">
+<script>try{var t=localStorage.getItem('pj-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../../assets/css/base.css?v=4">
+<link rel="stylesheet" href="../../assets/css/notes.css?v=4">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script defer src="../../assets/js/site.js?v=2"></script>
+<script defer src="../../assets/js/fig-kit.js?v=2"></script>
+<script defer src="../../assets/js/figures/journey.js?v=2"></script>
+<script defer src="../../assets/js/figures/induction.js?v=1"></script>
+<script defer src="../../assets/js/figures/transformer.js?v=2"></script>
+<script defer src="../../assets/js/figures/lineloss.js?v=2"></script>
+<script defer src="../../assets/js/figures/rms.js?v=1"></script>
+<script defer src="../../assets/js/notes.js?v=5"></script>
+</head>
+<body data-chapter="1" data-progress-key="energy-grid-1">
+<div class="progress-bar" aria-hidden="true"></div>
+
+<header class="topbar">
+  <nav class="sitenav" aria-label="Site"><a class="brand" href="../../index.html">Showtime Polymaths</a><a class="navlink" href="../../about.html">About Me</a><a class="navlink" href="../../news/index.html">News</a></nav>
+  <div class="tools">
+    <button class="btn" type="button" data-action="print">Save as PDF</button>
+    <button class="btn" type="button" data-action="theme">Dark</button>
+  </div>
+</header>
+<nav class="crumbs crumbrow" aria-label="Breadcrumb"><a href="../index.html">Energy</a><span class="sep">/</span><span class="here">The Grid · Ch. 1</span></nav>
+
+<div class="shell">
+  <aside class="toc" aria-label="Contents">
+    <div class="toc-title">Contents</div>
+    <ol></ol>
+  </aside>
+
+  <main class="page">
+    <div class="running-head"><span>Energy · The Grid</span><span>Chapter 1</span></div>
+
+    <div class="title-block">
+      <div class="chapter-label">Chapter 1 · The Grid</div>
+      <h1>Why Does the Grid Run at 400,000 Volts?</h1>
+      <p class="standfirst">230 volts at your socket, 400,000 on the pylons, 20,000 at the power station. Why all the different numbers? A 150-year-old story about heat, a famous industry feud, and one very simple equation.</p>
+      <div class="stats" aria-label="Chapter at a glance">
+        <div><span class="k">prerequisites</span><span class="v"><a href="../../physics/electromagnetism/ch01-charge-to-ohms-law.html">Physics Ch. 1</a></span></div>
+        <div><span class="k">reading time</span><span class="v">≈ 25 min</span></div>
+        <div><span class="k">interactive figures</span><span class="v" data-figcount>5</span></div>
+        <div><span class="k">your progress</span><span class="v live" data-progress>0 / 8</span></div>
+      </div>
+    </div>
+
+    <div class="intro" id="intro">
+      <p class="hook">So why does the grid run at 400,000 volts?</p>
+      <p>You plug your laptop into a socket at 230 volts. But the cables strung between the pylons you drive past carry up to 400,000 volts. And the generator in the power station makes something else again, around 20,000.</p>
+      <p>So why all these different numbers? Why not just make 230 V at the power station and send it straight to your house? It turns out the answer is a 150-year-old story about heat, a famous industry feud, and one very simple equation.</p>
+
+      <figure class="fig" id="fig-journey" data-figure="journey" data-height="250" data-label="The journey of electricity from power station to plug, with the voltage at each stage">
+        <div class="fig-frame">
+          <div class="fig-head"><span class="fig-num"></span><span class="fig-tag">From power station to plug</span></div>
+          <div class="fig-stage"></div>
+          <div class="fig-foot"><span class="fig-hint">hover or tap a stage</span><span class="fig-readout"></span></div>
+          <div class="fig-controls"></div>
+        </div>
+        <figcaption>The journey your electricity takes. It leaves the power station at about 20,000 V, is stepped up to 400,000 V for the long-distance pylons, then stepped back down in stages until it reaches your socket at 230 V. By the end of this chapter you’ll know why each of those numbers is what it is.</figcaption>
+      </figure>
+    </div>
+
+    <nav class="contents" aria-label="Chapter contents">
+      <h2>Contents</h2>
+      <ol></ol>
+    </nav>
+
+    <!-- 1.1 -->
+    <section class="sec" id="recap">
+      <h2>A quick recap: what voltage means</h2>
+      <p>Voltage is energy per unit of charge (<a href="../../physics/electromagnetism/ch01-charge-to-ohms-law.html#voltage">Physics Ch. 1, §1.5</a>). One volt means every coulomb of charge carries one joule of energy.</p>
+      <p>So at 230 V, every coulomb flowing through your laptop charger hands over 230 joules. On a 400,000 V line, every coulomb that drops through the full voltage carries 400,000 joules. Same idea, just a much higher “hill” for the charge to roll down.</p>
+    </section>
+
+    <!-- 1.2 -->
+    <section class="sec" id="faraday">
+      <h2>How it all started: Faraday’s magnet and coil</h2>
+      <p>Basically, back in 1831, Michael Faraday noticed something strange. When he moved a magnet in and out of a coil of wire, a current flowed in the wire. Hold the magnet still and the current stopped. It was the <em>change</em> in the magnetic field that made the electricity. This is <span class="term">electromagnetic induction</span>, and every spinning generator today still works this way.</p>
+
+      <figure class="fig" id="fig-induction" data-figure="induction" data-height="270" data-label="Drag a magnet in and out of a coil and watch the current meter">
+        <div class="fig-frame">
+          <div class="fig-head"><span class="fig-num"></span><span class="fig-tag">Only a changing field makes a current</span></div>
+          <div class="fig-stage"></div>
+          <div class="fig-foot"><span class="fig-hint">drag the magnet in and out of the coil</span><span class="fig-readout"></span></div>
+          <div class="fig-controls"></div>
+        </div>
+        <figcaption>Faraday’s experiment. Move the magnet and the needle kicks; push it in and the current flows one way, pull it out and it flows the other. Leave the magnet sitting inside the coil and the needle drops back to zero: a strong field that isn’t changing makes no current at all.</figcaption>
+      </figure>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Why does only a changing field work?</span>
+        <p>Faraday found that the voltage induced in a coil depends on how fast the magnetic field through it changes. A steady magnet gives zero change, so zero voltage.</p>
+        <p>That’s why generators spin: spinning a magnet inside coils keeps the field changing, over and over.</p>
+      </details>
+    </section>
+
+    <!-- 1.3 -->
+    <section class="sec" id="edison">
+      <h2>Edison’s problem: the one-mile limit</h2>
+      <p>For fifty years induction was mostly a lab curiosity. Then, in 1882, Thomas Edison opened some of the first public power stations, one at Holborn Viaduct in London and one on Pearl Street in New York. They made direct current (DC) at about 110 volts.</p>
+      <p>There was a catch. At such a low voltage, so much energy was lost as heat in the wires that a power station could only supply homes within about a mile. To light a whole city, you’d need a power station in every neighbourhood.</p>
+    </section>
+
+    <!-- 1.4 -->
+    <section class="sec" id="transformer">
+      <h2>The transformer, and the War of the Currents</h2>
+      <p>The fix came from Faraday’s discovery again: the <strong>transformer</strong>. Wrap two coils around the same iron core. A changing current in the first coil makes a changing magnetic field, which the iron channels through the second coil and induces a voltage there. Give the second coil more turns and you get a higher voltage. Give it fewer and you get a lower one.</p>
+      <div class="eq" id="eq-turns" data-words="voltage out ÷ voltage in = turns out ÷ turns in">\dfrac{V_2}{V_1} = \dfrac{N_2}{N_1}</div>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Why does the turns ratio set the voltage?</span>
+        <p>The iron core makes sure the same changing field passes through every turn of both coils, so each turn picks up the same voltage. A coil with 20 times as many turns picks up 20 times the voltage.</p>
+        <p>If the first coil has 100 turns and the second has 2,000, the voltage goes up 20 times, for example from 20,000 V to 400,000 V. And because energy is conserved, the current goes <em>down</em> 20 times: the power in equals the power out (minus a little heat).</p>
+      </details>
+
+      <figure class="fig" id="fig-transformer" data-figure="transformer" data-height="270" data-label="A transformer with an iron core, adjustable secondary turns and an AC or DC supply">
+        <div class="fig-frame">
+          <div class="fig-head"><span class="fig-num"></span><span class="fig-tag">Two coils, one iron core</span></div>
+          <div class="fig-stage"></div>
+          <div class="fig-foot"><span class="fig-hint">change the turns · switch AC and DC</span><span class="fig-readout"></span></div>
+          <div class="fig-controls"></div>
+        </div>
+        <figcaption>A transformer. The primary coil (100 turns) is fed 20,000 V; the amber arrows show the magnetic field the iron carries round to the secondary coil. Change the secondary’s turns to step the voltage up or down. Then switch to DC: the field stops changing, and the output drops to nothing. (The wave is slowed right down from 50 cycles a second.)</figcaption>
+      </figure>
+
+      <p>The key word is <em>changing</em>. A transformer only works if the current keeps changing, and DC doesn’t change. So engineers like Nikola Tesla and George Westinghouse backed <strong>alternating current</strong> (AC), which reverses direction many times a second. That way voltage could be stepped up for the journey and back down for homes. Edison fought hard for DC, in what became known as the <span class="term">War of the Currents</span>. AC won.</p>
+
+      <div class="box careful">
+        <span class="box-title">Careful: DC has made a comeback</span>
+        <p>AC won because transformers were the only practical way to change voltage. Today, power electronics can convert DC voltages too, so very long cables, especially undersea ones, often use <strong>high-voltage DC</strong> (HVDC), which avoids some of AC’s losses over long distances. Britain’s links to Norway and France are HVDC cables. The grid itself is still AC.</p>
+      </div>
+    </section>
+
+    <!-- 1.5 -->
+    <section class="sec" id="national-grid">
+      <h2>Building Britain’s National Grid</h2>
+      <p>In Britain, Sebastian de Ferranti built Deptford Power Station in 1889. It sent AC into central London at 10,000 volts, which was astonishingly high for the time. It showed you could build one big power station far away and send the power in.</p>
+      <p>By the 1920s Britain was a mess. Hundreds of local electricity companies ran at different voltages and frequencies, so you couldn’t share power between towns. Parliament stepped in with the Electricity (Supply) Act 1926. A new Central Electricity Board linked everything into one network of 132,000-volt lines, built between 1927 and 1933, and gradually standardised the country on 50 Hz. They called it the <strong>National Grid</strong>, which is where the name comes from.</p>
+      <p>As power stations grew bigger, the voltages grew too:</p>
+      <ol class="timeline">
+        <li><span class="yr">1882</span>Edison’s first power stations, DC <span class="kv">110 V</span></li>
+        <li><span class="yr">1889</span>Ferranti’s Deptford sends AC into London <span class="kv">10 kV</span></li>
+        <li><span class="yr">1927–33</span>The National Grid links Britain together <span class="kv">132 kV</span></li>
+        <li><span class="yr">1950s</span>The “Supergrid” <span class="kv">275 kV</span></li>
+        <li><span class="yr">1960s</span>Today’s backbone <span class="kv">400 kV</span></li>
+      </ol>
+    </section>
+
+    <!-- 1.6 -->
+    <section class="sec" id="losses">
+      <h2>Why higher voltage loses less</h2>
+      <p>Here’s the physics that drove the whole story. But first, a quick one: what actually is <strong>power</strong>?</p>
+      <p>Energy is <em>how much</em>; power is <em>how fast</em>. Power is the rate energy gets delivered, in joules per second. One joule per second is called a <strong>watt</strong> (W). A 60 W bulb turns 60 joules into light and heat every second; a 3,000 W kettle gets through 3,000 joules every second. And a power station sending out 100 MW is delivering 100 million joules every second.</p>
+      <p>Now the two simple rules. First, the power you’re sending is voltage times current:</p>
+      <div class="eq" id="eq-power" data-words="power = voltage × current">P = V\,I</div>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Why is power voltage × current?</span>
+        <p>It falls straight out of the definitions. Voltage is joules per coulomb (the energy each bit of charge carries). Current is coulombs per second (how much charge flows past each second).</p>
+        <p>Multiply them: (joules per coulomb) × (coulombs per second) = joules per second = watts. The coulombs cancel. A kettle on 230 V drawing 13 A: 230 × 13 ≈ 3,000 W.</p>
+        <p>Your electricity bill charges for <em>energy</em>, in kilowatt-hours: 1,000 W running for one hour, which is 3.6 million joules. Power × time = energy.</p>
+      </details>
+      <p>Second, the power wasted as heat in the wire depends on the current <em>squared</em>:</p>
+      <div class="eq" id="eq-loss" data-words="power lost as heat = current² × resistance">P_{\text{loss}} = I^2 R</div>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Why current squared?</span>
+        <p>From <a href="../../physics/electromagnetism/ch01-charge-to-ohms-law.html#ohm">Physics Ch. 1</a>. The voltage lost along a wire is \(V = IR\) (Ohm’s law). The power lost is that voltage drop times the current: \((IR) \times I = I^2 R\).</p>
+        <p>Current appears twice, so the loss grows with its square.</p>
+      </details>
+      <p>So if you want to send a fixed amount of power, you have a choice. You can use low voltage and high current, or high voltage and low current. Because the loss depends on current squared, high voltage wins by a huge margin.</p>
+
+      <div class="box example">
+        <span class="box-title">Worked example</span>
+        <p>You want to send 100 MW (100 million watts) down a line with a resistance of 5 Ω.</p>
+        <p><strong>At 20,000 V:</strong> current = 100,000,000 ÷ 20,000 = 5,000 A. Loss = 5,000² × 5 = 125 MW. That’s more than you’re sending, so it’s impossible. The wire would melt long before that.</p>
+        <p><strong>At 400,000 V:</strong> current = 100,000,000 ÷ 400,000 = 250 A. Loss = 250² × 5 = 312,500 W, about 0.3 MW. That’s 0.3% of the power.</p>
+        <p>The voltage is 20 times higher, so the current is 20 times lower and the loss is 20² = 400 times smaller.</p>
+      </div>
+
+      <figure class="fig" id="fig-lineloss" data-figure="lineloss" data-height="270" data-label="Slide the line voltage and watch the heat lost in the wire">
+        <div class="fig-frame">
+          <div class="fig-head"><span class="fig-num"></span><span class="fig-tag">Loss = I² × R</span></div>
+          <div class="fig-stage"></div>
+          <div class="fig-foot"><span class="fig-hint">slide the line voltage</span><span class="fig-readout"></span></div>
+          <div class="fig-controls"></div>
+        </div>
+        <figcaption>The worked example, live. Sending 100 MW down a 5 Ω line: slide the voltage up and the current falls, the wire stops glowing, and almost all the power arrives. Slide it down to 20 kV and you’d lose more than you send.</figcaption>
+      </figure>
+
+      <p>That’s the whole reason for pylons and transformers. Across Britain’s high-voltage transmission network, only about 2% of the power is lost.</p>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Only 2%, all the way to my house?</span>
+        <p>Not quite. The 2% is just the high-voltage transmission network, the pylons. The lower-voltage local networks that carry power the last few miles to homes lose more, roughly another 5%.</p>
+        <p>So altogether, somewhere around 7–8% of the electricity generated in Britain is lost on the way. That’s much higher in the final stretch, exactly because the voltage there is lower.</p>
+      </details>
+    </section>
+
+    <!-- 1.7 -->
+    <section class="sec" id="million">
+      <h2>So why not a million volts?</h2>
+      <p>If higher voltage is so good, why stop at 400,000? Because very high voltage brings its own problems:</p>
+      <ul>
+        <li><strong>The air starts to break down.</strong> The electric field right at the surface of the wire gets so strong that it rips electrons off nearby air molecules. This is called <span class="term">corona discharge</span>. You can sometimes hear it as a crackle or buzz under power lines, and it wastes energy. It’s why pylons often carry two or four wires bundled together for each circuit: spreading the charge out weakens the field at each wire’s surface.</li>
+        <li><strong>Everything has to be bigger.</strong> Higher voltage needs longer insulators, bigger gaps between wires, taller pylons and wider safety zones. All of that costs money and is harder to get through planning.</li>
+      </ul>
+      <p>So every country picks a sweet spot. For Britain’s fairly short distances, 400 kV is it. Countries that send power thousands of kilometres go higher: China runs some lines at over 1,000,000 volts.</p>
+    </section>
+
+    <!-- 1.8 -->
+    <section class="sec" id="ends">
+      <h2>The two ends: 20,000 V and 230 V</h2>
+      <h3>Where the 20,000 V at the generator comes from</h3>
+      <p>The generator is stuck in the middle of two opposite problems:</p>
+      <ul>
+        <li><strong>Too high a voltage, and the coils inside fail.</strong> The generator’s copper coils are packed tightly into a spinning machine. Higher voltage needs thicker insulation between the wires, which takes up space the copper needs, and raises the risk of sparks jumping across.</li>
+        <li><strong>Too low a voltage, and the current gets huge.</strong> Remember \(P = VI\). For a given power, lower voltage means more current, which means thicker conductors and more heat to remove.</li>
+      </ul>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">How big is the current at 20 kV?</span>
+        <p>Big power stations use <em>three-phase</em> power: three wires, each carrying its own alternating current, a third of a cycle apart. For three-phase, current per wire = \(P \div (\sqrt{3} \times V)\).</p>
+        <p>So a 600 MW generator at 20,000 V pushes about 600,000,000 ÷ (1.73 × 20,000) ≈ <strong>17,000 amps</strong> down each conductor. A kettle draws 13 A, so that’s the current of about 1,300 kettles in each one.</p>
+      </details>
+      <p>So generators settle at roughly 11,000 to 25,000 volts, often around 20,000. Then a transformer right next to the generator steps the voltage straight up for the journey.</p>
+
+      <h3>Where the 230 V at home comes from</h3>
+      <p>Honestly, this one is partly convention. Britain used 240 V for decades, and much of Europe used 220 V. In the late 1980s Europe agreed on a common figure of 230 V, and Britain officially switched on 1 January 1995, with a tolerance wide enough (216–253 V) that nobody had to change any equipment. So British sockets often still measure close to 240 V.</p>
+
+      <div class="box careful">
+        <span class="box-title">Careful: AC voltage isn’t one fixed number</span>
+        <p>With AC, the voltage swings up and down 50 times a second. The “230 V” is a kind of average called the <span class="term">RMS</span> value: the steady DC voltage that would deliver the same power. The actual peak is about 325 V.</p>
+      </div>
+      <div class="eq" id="eq-rms" data-words="RMS voltage = peak voltage ÷ √2">V_{\text{RMS}} = \dfrac{V_{\text{peak}}}{\sqrt{2}} = \dfrac{325}{1.414} \approx 230\ \text{V}</div>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Why divide by √2?</span>
+        <p>Power depends on voltage <em>squared</em>, so it doesn’t care whether the voltage is positive or negative. Over a full swing, a sine wave squared averages out to exactly half its peak value.</p>
+        <p>The DC voltage that gives that same average power is the peak ÷ √2. “RMS” just names the recipe: the <strong>r</strong>oot of the <strong>m</strong>ean of the <strong>s</strong>quare.</p>
+      </details>
+
+      <figure class="fig" id="fig-rms" data-figure="rms" data-height="230" data-label="Mains AC voltage swinging between plus and minus 325 volts with the 230 volt RMS level">
+        <div class="fig-frame">
+          <div class="fig-head"><span class="fig-num"></span><span class="fig-tag">325 V peak, 230 V RMS</span></div>
+          <div class="fig-stage"></div>
+          <div class="fig-foot"><span class="fig-hint">switch between voltage and power</span><span class="fig-readout"></span></div>
+          <div class="fig-controls"></div>
+        </div>
+        <figcaption>Two cycles of mains electricity, slowed down. The voltage swings between +325 V and −325 V. Switch to “Power” to see why the useful value is 230 V: the power is always positive, and its average is the same as a steady 230 V would give.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Summary -->
+    <section class="end-matter" id="summary">
+      <h2>Summary</h2>
+      <ul class="summary-list">
+        <li>Voltage is energy per coulomb. At 400 kV, every coulomb carries 400,000 joules.</li>
+        <li>Faraday (1831): a changing magnetic field induces a voltage. Generators and transformers both rely on this.</li>
+        <li>Edison’s low-voltage DC (1882) lost too much heat to travel more than about a mile.</li>
+        <li>Transformers can step voltage up and down, but only with AC. So AC won the War of the Currents.</li>
+        <li>Britain linked hundreds of local systems into one 132 kV National Grid (1927–1933), standardised on 50 Hz. It later moved to 275 kV and then 400 kV.</li>
+        <li>Loss = I² × R. Raising the voltage 20 times cuts the current 20 times and the loss 400 times.</li>
+        <li>400 kV is the sweet spot between lower losses and the cost of corona discharge, bigger pylons and insulators.</li>
+        <li>Generators make about 20 kV, which balances insulation limits against huge currents.</li>
+        <li>230 V at home is a compromise between Britain’s 240 V and Europe’s 220 V, made official in Britain in 1995.</li>
+      </ul>
+      <div class="box">
+        <span class="box-title">Key idea</span>
+        <p>The whole shape of the grid comes from one equation. Heat loss grows with current squared, so you send power at high voltage and low current, then use transformers to bring the voltage back down near homes.</p>
+      </div>
+    </section>
+
+    <!-- Questions -->
+    <section class="end-matter" id="check">
+      <h2>Check yourself</h2>
+      <details class="q"><summary><span class="qn">1.</span><span>Why can’t a transformer step up DC?</span><span class="reveal">show answer</span></summary>
+        <div class="answer"><p>A transformer relies on induction, which needs a <em>changing</em> magnetic field. DC is a steady current, so it makes a steady field, and a steady field induces no voltage in the second coil.</p></div></details>
+      <details class="q"><summary><span class="qn">2.</span><span>A transformer’s primary coil has 200 turns and is fed 230 V. The secondary has 10 turns. What voltage comes out?</span><span class="reveal">show answer</span></summary>
+        <div class="answer"><p>\(230 \times 10 \div 200 = 11.5\) V. Twenty times fewer turns, twenty times less voltage.</p></div></details>
+      <details class="q"><summary><span class="qn">3.</span><span>You send 50 MW at 100,000 V down a line with 4 Ω resistance. How much is lost as heat? What if you doubled the voltage?</span><span class="reveal">show answer</span></summary>
+        <div class="answer"><p>Current = 50,000,000 ÷ 100,000 = 500 A. Loss = 500² × 4 = 1,000,000 W = 1 MW (2%). Double the voltage and the current halves to 250 A, so the loss drops to a quarter: 0.25 MW.</p></div></details>
+      <details class="q"><summary><span class="qn">4.</span><span>Why doesn’t Britain run its grid at 2,000,000 volts?</span><span class="reveal">show answer</span></summary>
+        <div class="answer"><p>The air around the wires would start breaking down (corona discharge, which wastes energy), and everything would need to be much bigger: longer insulators, taller pylons, wider gaps. For Britain’s short distances, the extra cost isn’t worth the small saving in losses.</p></div></details>
+      <details class="q"><summary><span class="qn">5.</span><span>Mains is 230 V RMS. What’s the peak voltage?</span><span class="reveal">show answer</span></summary>
+        <div class="answer"><p>\(230 \times \sqrt{2} \approx 325\) V.</p></div></details>
+
+      <div class="next-up">
+        <div>
+          <span class="chapter-label">Next · The Grid</span>
+          <span class="t">More on how the grid works</span>
+        </div>
+        <span class="pill">coming soon</span>
+      </div>
+    </section>
+
+    <div class="running-foot"><span>Showtime Polymaths · Energy</span><span>Ch. 1: Why Does the Grid Run at 400,000 Volts?</span></div>
+  </main>
+</div>
+
+</body>
+</html>
