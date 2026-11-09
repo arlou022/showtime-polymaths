@@ -411,3 +411,14 @@ details.why .katex { font-size: 1em; }
 }
 .timeline .yr { font-family: var(--mono); font-size: 12px; color: var(--accent); margin-right: 8px; }
 .timeline .kv { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--ink); background: var(--accent-soft); border-radius: 4px; padding: 1px 6px; margin-left: 6px; white-space: nowrap; }
+
+/* ---------- Data tables inside notes ---------- */
+.page table.ladder { border-collapse: collapse; width: 100%; margin: 14px 0 20px; font-size: 15px; }
+.page table.ladder th, .page table.ladder td { border-bottom: 1px solid var(--rule); padding: 8px 10px; text-align: left; vertical-align: top; }
+.page table.ladder th { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); border-bottom: 1.5px solid var(--ink); }
+.page table.ladder td:nth-child(2) { font-family: var(--mono); font-size: 13px; white-space: nowrap; color: var(--accent); }
+@media (max-width: 600px) { .page table.ladder { font-size: 13.5px; } .page table.ladder th, .page table.ladder td { padding: 6px 6px; } }
+
+a.next-up { color: var(--ink); }
+a.next-up:hover { text-decoration: none; border-color: var(--accent-bright); }
+a.next-up .pill { color: var(--accent); border-color: var(--accent-bright); }

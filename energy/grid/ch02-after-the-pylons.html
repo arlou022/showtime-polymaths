@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>After the Pylons</title>
+<meta name="description" content="Showtime Polymaths · Energy · The Grid · Chapter 2: the distribution network, from the grid supply point to your street: the voltage ladder, DNOs, reverse power flow, diversity, and getting smarter with flexibility.">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Showtime Polymaths">
+<meta property="og:title" content="What Happens After the Pylons? · Showtime Polymaths">
+<meta property="og:description" content="From the grid supply point to your street: the voltage ladder, the green box at the end of the road, and why a sunny afternoon can be a problem. With 5 interactive figures.">
+<meta name="twitter:card" content="summary">
+<script>try{var t=localStorage.getItem('pj-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../../assets/css/base.css?v=4">
+<link rel="stylesheet" href="../../assets/css/notes.css?v=5">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script defer src="../../assets/js/site.js?v=2"></script>
+<script defer src="../../assets/js/fig-kit.js?v=2"></script>
+<script defer src="../../assets/js/figures/ladder.js?v=2"></script>
+<script defer src="../../assets/js/figures/streetflow.js?v=1"></script>
+<script defer src="../../assets/js/figures/voltprofile.js?v=1"></script>
+<script defer src="../../assets/js/figures/diversity.js?v=3"></script>
+<script defer src="../../assets/js/figures/lifo.js?v=1"></script>
+<script defer src="../../assets/js/notes.js?v=5"></script>
+</head>
+<body data-chapter="2" data-progress-key="energy-grid-2">
+<div class="progress-bar" aria-hidden="true"></div>
+
+<header class="topbar">
+  <nav class="sitenav" aria-label="Site"><a class="brand" href="../../index.html">Showtime Polymaths</a><a class="navlink" href="../../about.html">About Me</a><a class="navlink" href="../../news/index.html">News</a></nav>
+  <div class="tools">
+    <button class="btn" type="button" data-action="print">Save as PDF</button>
+    <button class="btn" type="button" data-action="theme">Dark</button>
+  </div>
+</header>
+<nav class="crumbs crumbrow" aria-label="Breadcrumb"><a href="../index.html">Energy</a><span class="sep">/</span><span class="here">The Grid · Ch. 2</span></nav>
+
+<div class="shell">
+  <aside class="toc" aria-label="Contents">
+    <div class="toc-title">Contents</div>
+    <ol></ol>
+  </aside>
+
+  <main class="page">
+    <div class="running-head"><span>Energy · The Grid</span><span>Chapter 2</span></div>
+
+    <div class="title-block">
+      <div class="chapter-label">Chapter 2 · The Grid</div>
+      <h1>What Happens After the Pylons?</h1>
+      <p class="standfirst">From the grid supply point to your street: the voltage ladder, the green box at the end of the road, and why a sunny afternoon can be a problem.</p>
+      <div class="stats" aria-label="Chapter at a glance">
+        <div><span class="k">prerequisites</span><span class="v"><a href="ch01-why-400000-volts.html">Grid Ch. 1</a></span></div>
+        <div><span class="k">reading time</span><span class="v">≈ 25 min</span></div>
+        <div><span class="k">interactive figures</span><span class="v" data-figcount>5</span></div>
+        <div><span class="k">your progress</span><span class="v live" data-progress>0 / 8</span></div>
+      </div>
+    </div>
+
+    <div class="intro" id="intro">
+      <p class="hook">So what happens after the pylons?</p>
+      <p><a href="ch01-why-400000-volts.html">Last chapter</a> we followed electricity from the power station up to 400,000 volts and onto the pylons. And we know it arrives at your socket at 230 volts. But what happens in between?</p>
+      <p>Somewhere near you, maybe at the end of your road, there’s a green metal box behind a fence with a yellow “Danger of death” sign. Or a grey drum bolted to a wooden pole. That’s the last stop before your house. Between it and the pylons sits a whole hidden network of cables, substations and transformers. It’s called the <strong>distribution network</strong>.</p>
+      <p>It’s easy to think of it as the boring bit, just the last few miles. But today it’s where most of the action is. Solar panels, batteries, electric cars, heat pumps and data centres all connect here. And it was never designed for any of them.</p>
+    </div>
+
+    <nav class="contents" aria-label="Chapter contents">
+      <h2>Contents</h2>
+      <ol></ol>
+    </nav>
+
+    <!-- 2.1 -->
+    <section class="sec" id="handover">
+      <h2>The handover: the grid supply point</h2>
+      <p>The pylons don’t run all the way to your town. At a big substation called a <strong>grid supply point</strong> (GSP), transformers step the voltage down from 400,000 or 275,000 volts to 132,000. This is the handover. Above it, the network belongs to the transmission company. Below it, it belongs to the local <strong>distribution network operator</strong> (DNO).</p>
+      <div class="box careful">
+        <span class="box-title">Careful: Scotland draws the line differently</span>
+        <p>In England and Wales, 132 kV counts as distribution. In Scotland it counts as transmission, so the handover happens lower down. It’s a historical quirk of how the networks were set up, not a difference in the physics.</p>
+      </div>
+    </section>
+
+    <!-- 2.2 -->
+    <section class="sec" id="ladder">
+      <h2>The voltage ladder</h2>
+      <p>From the grid supply point, the voltage comes down in stages, like steps on a ladder:</p>
+      <table class="ladder">
+        <thead><tr><th>Step</th><th>Voltage</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td>Grid supply point</td><td>400 or 275 kV → 132 kV</td><td>Hands power from transmission to the DNO</td></tr>
+          <tr><td>Bulk supply point</td><td>132 kV → 33 kV</td><td>Feeds a city or a large rural area</td></tr>
+          <tr><td>Primary substation</td><td>33 kV → 11 kV</td><td>Feeds a town or a few neighbourhoods</td></tr>
+          <tr><td>Secondary substation</td><td>11 kV → 400 V</td><td>The green box or pole drum feeding your street</td></tr>
+          <tr><td>Your house</td><td>230 V</td><td>One phase of the 400 V supply</td></tr>
+        </tbody>
+      </table>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Why 11, 33 and 132?</span>
+        <p>Notice they’re all multiples of 11. The usual explanation goes back to the early 1900s. Engineers designed equipment for round numbers like 10, 30 and 120 kV. But voltage drops along a line (\(V = IR\)), so they sent power out about 10% higher, to make sure it still arrived at roughly the round number.</p>
+        <p>1.1 × 10 = 11, 1.1 × 30 = 33 and 1.1 × 120 = 132. The numbers stuck and became standards.</p>
+      </details>
+
+      <figure class="fig" id="fig-ladder" data-figure="ladder" data-height="268" data-label="The voltage ladder from the pylons down to a house">
+        <div class="fig-frame">
+          <div class="fig-head"><span class="fig-num"></span><span class="fig-tag">One step down at a time</span></div>
+          <div class="fig-stage"></div>
+          <div class="fig-foot"><span class="fig-hint">hover or tap a step</span><span class="fig-readout"></span></div>
+          <div class="fig-controls"></div>
+        </div>
+        <figcaption>The voltage ladder, from the pylons down to your home (log scale). Each drop is a transformer at a substation. Hover a step to see what it feeds and roughly how many there are.</figcaption>
+      </figure>
+
+      <p>Big factories and solar farms connect higher up the ladder, at 11, 33 or 132 kV. Homes connect at the bottom.</p>
+      <p>And why does the street get 400 V but your house 230 V? Your street gets <strong>three-phase</strong> power, the same three wires a third of a cycle apart that we met in <a href="ch01-why-400000-volts.html#ends">Chapter 1</a>. The voltage between two of the phase wires is 400 V. Your house connects to just one phase and the neutral wire, which is smaller by a factor of √3:</p>
+      <div class="eq" id="eq-phase" data-words="voltage to each house = voltage between phases ÷ √3">V_{\text{house}} = \dfrac{V_{\text{phase-to-phase}}}{\sqrt{3}} = \dfrac{400}{1.73} \approx 230\ \text{V}</div>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Why √3?</span>
+        <p>The three phases peak a third of a cycle apart. When you measure between two of them, you get the difference of two waves that are out of step, and that difference works out √3 ≈ 1.73 times bigger than either wave on its own.</p>
+        <p>It’s the same √3 that appeared in the generator current in Chapter 1. Houses along a street are shared out between the three phases, so the load stays roughly balanced.</p>
+      </details>
+
+      <h3>Why not jump straight from 132,000 V to 230 V?</h3>
+      <p>It’s the same trade-off as last chapter, just in reverse. High voltage is cheap for moving lots of power a long way. But high-voltage equipment is big and expensive. It needs thick insulation, big gaps and large, fenced-off substations. You can’t run 132,000 volts down every residential street.</p>
+      <p>So each step down covers a shorter distance and carries less power, using smaller, cheaper kit. By the time you reach your street, it’s a cable under the pavement feeding a hundred or so homes.</p>
+      <div class="box">
+        <span class="box-title">Analogy: roads</span>
+        <p>Transmission is the motorway. 132 kV and 33 kV are the A roads between towns. 11 kV is the B roads through neighbourhoods. 400 V is your street. You wouldn’t build a motorway to every front door, and you wouldn’t drive from Cardiff to London on side streets.</p>
+      </div>
+      <p>This also explains a number from last chapter. Transmission loses about 2%, but the local networks lose roughly another 5%.</p>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Why do the local networks lose more?</span>
+        <p>The voltage is lower, so for the same power the current is higher, and the loss grows with current squared (\(I^2R\)).</p>
+        <p>The last few miles are the most wasteful part of the journey.</p>
+      </details>
+    </section>
+
+    <!-- 2.3 -->
+    <section class="sec" id="dnos">
+      <h2>Who runs it: the DNOs</h2>
+      <p>Basically, after the industry was nationalised in 1948, local electricity was run by regional boards. When it was privatised around 1990, those regions became the <strong>14 distribution areas</strong> still used today. Over time, takeovers left them run by <strong>six companies</strong>:</p>
+      <ul>
+        <li><strong>National Grid Electricity Distribution (NGED):</strong> South Wales, the South West, and the East and West Midlands. It was called Western Power Distribution until National Grid bought it in 2021 and renamed it in 2022.</li>
+        <li><strong>UK Power Networks:</strong> London, the South East and the East of England.</li>
+        <li><strong>SSEN Distribution:</strong> the north of Scotland and central southern England.</li>
+        <li><strong>SP Energy Networks:</strong> central and southern Scotland, Merseyside and North Wales.</li>
+        <li><strong>Northern Powergrid:</strong> the North East and Yorkshire.</li>
+        <li><strong>Electricity North West:</strong> the North West. Since 2024 it has had the same owner as SP Energy Networks: Iberdrola, the Spanish company that owns ScottishPower.</li>
+      </ul>
+      <p>Each one is a <strong>natural monopoly</strong>. It would make no sense to have two sets of cables down every street, so you can’t choose your DNO. Instead, the regulator Ofgem sets how much each one can spend and earn, in five-year price controls. The next one, <strong>ED3</strong>, runs from 2028 to 2033.</p>
+      <div class="box careful">
+        <span class="box-title">Careful: your DNO isn’t your supplier</span>
+        <p>The company on your bill, like Octopus or British Gas, is your <strong>supplier</strong>. It buys electricity and sells it to you. The DNO owns the cables that deliver it, and gets paid through a slice of your bill. If there’s a power cut, you call the DNO (or 105), not your supplier.</p>
+      </div>
+    </section>
+
+    <!-- 2.4 -->
+    <section class="sec" id="one-way">
+      <h2>Built for a one-way world</h2>
+      <p>For most of the last century, distribution was simple. Power flowed one way, downhill: from big power stations, through the ladder, to homes and businesses.</p>
+      <p>So DNOs designed the network for the worst case, usually a cold winter evening, and then mostly left it alone. Engineers call this <strong>“fit and forget”</strong>. If the cables were big enough for the peak, nobody needed to watch them closely.</p>
+      <p>Then the world changed. Solar farms, wind turbines and batteries started connecting at 11 kV, 33 kV and 132 kV. Millions of homes put solar panels on their roofs. This is called <span class="term">embedded generation</span>: generation inside the distribution network, rather than at a big power station.</p>
+      <p>On a sunny afternoon, a village with a solar farm can produce more power than it uses. The extra has nowhere to go but back <strong>up</strong> the ladder. This is <strong>reverse power flow</strong>, and parts of the network were never designed for it.</p>
+
+      <figure class="fig" id="fig-streetflow" data-figure="streetflow" data-height="250" data-label="A street with rooftop solar; power flows down in the evening and back up at sunny midday">
+        <div class="fig-frame">
+          <div class="fig-head"><span class="fig-num"></span><span class="fig-tag">Down in the evening, up at noon</span></div>
+          <div class="fig-stage"></div>
+          <div class="fig-foot"><span class="fig-hint">slide through the day · switch the weather</span><span class="fig-readout"></span></div>
+          <div class="fig-controls"></div>
+        </div>
+        <figcaption>One street through a day. In the evening, power flows down from the substation to the houses. Around a sunny midday, the rooftop panels make more than the street uses, and the flow reverses back up the ladder. On a cloudy day it never reverses.</figcaption>
+      </figure>
+    </section>
+
+    <!-- 2.5 -->
+    <section class="sec" id="full">
+      <h2>The two ways a network gets full</h2>
+      <p>There are two main limits on how much a network can carry.</p>
+      <h3>1. Heat</h3>
+      <p>This is the same as the pylons in Chapter 1. Current heats cables and transformers (\(I^2R\)). Too much for too long, and the insulation degrades or the transformer overheats. Every cable and transformer has a <strong>thermal rating</strong>. It doesn’t matter which way the power is flowing. Too much current is too much current.</p>
+      <h3>2. Voltage</h3>
+      <p>This is the less obvious one. Remember Ohm’s law: when current flows along a cable, some voltage is lost along the way.</p>
+      <div class="eq" id="eq-drop" data-words="voltage change along the cable = current × the cable’s resistance">\Delta V = I R</div>
+      <p>So the houses at the end of a long street get a slightly lower voltage than the ones near the substation. DNOs plan for this. They set the transformer slightly high, so that even the last house gets enough voltage on a busy winter evening.</p>
+      <p>But when power flows <strong>back</strong>, the effect reverses. The voltage at the far end rises <em>above</em> the transformer’s. And the law says your supply has to stay between <strong>216 V and 253 V</strong>, the same tolerance from <a href="ch01-why-400000-volts.html#ends">Chapter 1</a>. Above 253 V the DNO is outside its legal limit. Push higher still, to about 262 V, and solar inverters are designed to switch themselves off within about a second, to protect your appliances.</p>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Why do inverters wait until 262 V?</span>
+        <p>UK rules for small generators (an engineering standard called G98, and G99 for bigger ones) set the inverter’s first over-voltage trip at 262.2 V, held for about a second.</p>
+        <p>That’s 230 V plus 14%, a bit above the network’s +10% legal limit, so inverters don’t switch off over small, brief overshoots.</p>
+      </details>
+
+      <div class="box example">
+        <span class="box-title">Worked example: a sunny day on a long street</span>
+        <p>A street cable has a resistance of 0.1 Ω from the substation to the last house. The transformer is set to 245 V.</p>
+        <p><strong>Winter evening:</strong> homes draw 150 A from the substation. Voltage drop = 150 × 0.1 = 15 V. The last house gets 245 − 15 = <strong>230 V</strong>. ✓</p>
+        <p><strong>Sunny summer afternoon:</strong> rooftop solar pushes 150 A back towards the substation. Now the voltage <em>rises</em> by 15 V. The last house sees 245 + 15 = <strong>260 V</strong>, above the 253 V legal limit. ✗ A little more sunshine and it passes about 262 V, where the inverters at the end of the street start switching off.</p>
+        <p>Setting the transformer high for winter makes summer worse. That’s why many rural streets struggle with solar long before any cable overheats.</p>
+      </div>
+
+      <figure class="fig" id="fig-voltprofile" data-figure="voltprofile" data-height="240" data-label="Voltage along a street cable with demand and solar sliders, legal limits and the inverter trip level">
+        <div class="fig-frame">
+          <div class="fig-head"><span class="fig-num"></span><span class="fig-tag">Current flowing back raises the voltage</span></div>
+          <div class="fig-stage"></div>
+          <div class="fig-foot"><span class="fig-hint">change demand and solar</span><span class="fig-readout"></span></div>
+          <div class="fig-controls"></div>
+        </div>
+        <figcaption>The worked example, live. The voltage starts at 245 V at the substation. Demand pulls the far end down; exported solar pushes it up. The green band is the legal range (216–253 V), and the red dashed line is where solar inverters switch off.</figcaption>
+      </figure>
+
+      <div class="box careful">
+        <span class="box-title">Careful: this is simplified</span>
+        <p>Real cables also have reactance (an AC effect), three phases, and many houses spread along the cable rather than one at the end. Some newer transformers can adjust their voltage automatically through the day. But the core idea is exactly this: current flowing back raises the voltage.</p>
+      </div>
+    </section>
+
+    <!-- 2.6 -->
+    <section class="sec" id="headroom">
+      <h2>Headroom, and why not everyone boils the kettle at once</h2>
+      <p>How much more can a substation take before it hits one of those limits? That spare room is called <strong>headroom</strong>. It comes in two kinds:</p>
+      <ul>
+        <li><strong>Demand headroom:</strong> room for more load, like EV chargers, heat pumps or a data centre.</li>
+        <li><strong>Generation headroom:</strong> room for more generation, like a solar farm or a battery exporting.</li>
+      </ul>
+      <p>A substation can have plenty of one and none of the other. DNOs such as NGED publish maps of both, so developers can see where they might connect.</p>
+      <p>Now here’s a neat question. A kettle draws 3 kW, a shower can draw 9 kW, and an oven another 2 or 3. So why can a transformer built for about 2 kW per house cope at all?</p>
+      <p>The answer is <strong>diversity</strong>. Not everyone boils the kettle at the same moment. Across a hundred homes, the peaks are spread out. So the average peak <em>per house</em> is much lower than any single house’s peak.</p>
+
+      <figure class="fig" id="fig-diversity" data-figure="diversity" data-height="240" data-label="Evening electricity use per house, averaged over a slider-controlled number of homes">
+        <div class="fig-frame">
+          <div class="fig-head"><span class="fig-num"></span><span class="fig-tag">The spikes rarely line up</span></div>
+          <div class="fig-stage"></div>
+          <div class="fig-foot"><span class="fig-hint">add more homes</span><span class="fig-readout"></span></div>
+          <div class="fig-controls"></div>
+        </div>
+        <figcaption>An evening of electricity use, 5 pm to 10 pm (simulated). One home on its own spikes whenever the shower, oven and kettle overlap. Add more homes and average them: the spikes cancel out, and the peak per house settles at around 1–2 kW.</figcaption>
+      </figure>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">How low is the peak per house?</span>
+        <p>DNOs measure it. Across a large group of homes, the peak demand per house traditionally works out at roughly 1 to 2 kW, even though each house can briefly draw ten times that.</p>
+        <p>Engineers call it <strong>after-diversity maximum demand</strong>. The more homes you add up, the more the individual spikes smooth out, so the lower the figure gets.</p>
+      </details>
+      <p>Electric cars and heat pumps break this. They don’t draw power for two minutes like a kettle. They run for hours, and often at the same times as everyone else’s: cold evenings for heat pumps, and straight after work for cars.</p>
+
+      <div class="box example">
+        <span class="box-title">Worked example: an EV on every other drive</span>
+        <p>A street transformer can supply 300 kW. Its 100 homes peak at about 2 kW each after diversity, so 200 kW. Comfortably fine.</p>
+        <p>Now 40 of those homes get a 7 kW car charger, and half of them plug in at 6 pm. That’s 20 × 7 = 140 kW extra, all at once. 200 + 140 = <strong>340 kW</strong>. The transformer is now overloaded, every weekday evening.</p>
+        <p>Spread the charging over the night, and the same cars fit easily. Same energy, different timing. That’s the whole idea behind <strong>smart charging</strong>.</p>
+      </div>
+      <div class="box careful">
+        <span class="box-title">Careful: kW and kVA</span>
+        <p>Engineers rate transformers in kVA rather than kW, because AC equipment has to carry some current that does no useful work. For this chapter, treating them as the same is close enough.</p>
+      </div>
+    </section>
+
+    <!-- 2.7 -->
+    <section class="sec" id="blind-spot">
+      <h2>The blind spot</h2>
+      <p>Here’s something surprising. DNOs know a lot about the top of the ladder. Grid supply points and primary substations have sensors and send live readings back to a control room.</p>
+      <p>But at the bottom, most of the hundreds of thousands of street transformers have <strong>no monitoring at all</strong>. Under fit and forget, nobody needed it. So a DNO often doesn’t know exactly how loaded a particular street transformer is. It estimates.</p>
+      <p>That’s changing. Smart meters report half-hourly readings, and over the next couple of years nearly every meter in the country is moving to half-hourly settlement. Matched to the right cables and transformers, that data can show what’s actually happening on each street. Doing that matching well is a data problem. Meters get linked to the wrong substation, readings go missing, and clock changes shuffle the timestamps. It’s very similar to the data-quality problems in any reporting job.</p>
+    </section>
+
+    <!-- 2.8 -->
+    <section class="sec" id="dso">
+      <h2>From DNO to DSO: getting smarter</h2>
+      <p>So what do you do when a substation is full? There are two broad options.</p>
+      <p><strong>Option 1: reinforce.</strong> Build more: bigger transformers, new cables, new substations. It works, but it’s slow, often years. It’s expensive. And the cost lands on everyone’s bills. It also means building for a peak that might only happen a few hours a year.</p>
+      <p><strong>Option 2: get smarter with what’s already there.</strong> This is where the network operator stops being passive and starts actively <em>running</em> the network. A DNO that does this is called a <strong>distribution system operator</strong> (DSO). In practice it uses three main tools:</p>
+      <ul>
+        <li><strong>Flexible connections and ANM.</strong> A new generator can connect <em>before</em> the reinforcement is built, if it agrees to be turned down when the network is full. <strong>Active Network Management</strong> (ANM) watches the constrained points live. When a limit gets close, it automatically tells generators to reduce output. It usually does this in <strong>last-in, first-out</strong> (LIFO) order, so the most recent connection gets turned down first.</li>
+        <li><strong>Flexibility markets.</strong> The DSO pays businesses and households to shift when they use power, or to export from batteries, at the times the network is tight. Paying for a few hours of flexibility can be much cheaper than building a new substation.</li>
+        <li><strong>Smart charging and smart tariffs.</strong> Nudging EVs and heat pumps away from the peak, like in the worked example above.</li>
+      </ul>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Where was the first ANM?</span>
+        <p>One of the world’s first ANM schemes went live on Orkney in 2009. The islands had more wind than their cable to the mainland could carry.</p>
+        <p>Instead of waiting for a new cable, the operator connected extra wind turbines on the condition that they’d be turned down automatically when the cable was full. Orkney went on to generate more electricity than it used across a year.</p>
+      </details>
+
+      <figure class="fig" id="fig-lifo" data-figure="lifo" data-height="250" data-label="Three wind farms sharing a cable; when it is full, the newest is turned down first">
+        <div class="fig-frame">
+          <div class="fig-head"><span class="fig-num"></span><span class="fig-tag">Last in, first out</span></div>
+          <div class="fig-stage"></div>
+          <div class="fig-foot"><span class="fig-hint">turn up the wind</span><span class="fig-readout"></span></div>
+          <div class="fig-controls"></div>
+        </div>
+        <figcaption>Three wind farms share a cable that can carry 30 MW. Turn up the wind: once their total would go over the limit, ANM turns down the newest connection first (C), and only then the next (B). The oldest, A, keeps running at full output.</figcaption>
+      </figure>
+
+      <h3>The catch, and where data comes in</h3>
+      <p>A flexible connection is a gamble for the generator. If you connect early but get turned down 30% of the time, you lose 30% of your income. So before signing, a developer wants to know <strong>how often, and how much, they’ll be curtailed</strong>.</p>
+      <p>That’s a forecasting problem. It needs years of half-hourly data on demand, generation, weather, network limits, outages and the LIFO order. DSOs such as NGED’s publish curtailment data and analysis for exactly this reason. It lets customers judge for themselves whether connecting early is worth it.</p>
+    </section>
+
+    <!-- Summary -->
+    <section class="end-matter" id="summary">
+      <h2>Summary</h2>
+      <ul class="summary-list">
+        <li><strong>Distribution</strong> carries power from the grid supply point to homes and businesses, stepping down 132 kV → 33 kV → 11 kV → 400 V.</li>
+        <li><strong>11, 33 and 132 are all multiples of 11,</strong> most likely from sending power out about 10% above round design voltages.</li>
+        <li><strong>400 V between phases, 230 V to each house:</strong> 400 ÷ √3 ≈ 230.</li>
+        <li><strong>Lower voltage means higher current,</strong> so local networks lose more (about 5%) than transmission (about 2%).</li>
+        <li><strong>Six companies run 14 areas.</strong> NGED covers South Wales, the South West and the Midlands. Each is a monopoly regulated by Ofgem.</li>
+        <li><strong>The network was built for one-way flow</strong> and designed for the winter peak under “fit and forget”.</li>
+        <li><strong>Embedded generation causes reverse power flow,</strong> which raises voltage along a cable and can push it past the 253 V limit, and eventually trip solar inverters at about 262 V.</li>
+        <li><strong>A network gets full in two ways:</strong> heat (thermal limits) and voltage.</li>
+        <li><strong>Diversity</strong> lets a network built for about 2 kW per home work. EVs and heat pumps break it by running for hours at the same times.</li>
+        <li><strong>Most street transformers aren’t monitored.</strong> Smart meter data is starting to fill the gap.</li>
+        <li><strong>A DSO actively runs the network,</strong> using flexible connections with ANM, flexibility markets and smart charging instead of only building more.</li>
+      </ul>
+      <div class="box">
+        <span class="box-title">Key idea</span>
+        <p>The distribution network was built for power flowing one way and was left alone. Now power flows both ways, and demand is less spread out. The choice is to build more, slowly and expensively, or to run the network actively, which takes good data and good forecasts.</p>
+      </div>
+    </section>
+
+    <!-- Questions -->
+    <section class="end-matter" id="check">
+      <h2>Check yourself</h2>
+      <details class="q"><summary><span class="qn">1.</span><span>A primary substation steps 33 kV down to 11 kV. What’s the turns ratio of its transformer?</span><span class="reveal">show answer</span></summary>
+        <div class="answer"><p>33 ÷ 11 = 3, so the primary coil has three times as many turns as the secondary.</p></div></details>
+      <details class="q"><summary><span class="qn">2.</span><span>Why do houses get 230 V when the street cable is 400 V?</span><span class="reveal">show answer</span></summary>
+        <div class="answer"><p>The street is three-phase. 400 V is measured between two phase wires. Each house connects to one phase and neutral, which is smaller by √3: 400 ÷ 1.73 ≈ 230 V.</p></div></details>
+      <details class="q"><summary><span class="qn">3.</span><span>A street cable has 0.2 Ω resistance to the last house. The transformer is set to 240 V. On a sunny afternoon, solar panels push 70 A back to the substation. Is the last house within the legal limit?</span><span class="reveal">show answer</span></summary>
+        <div class="answer"><p>The voltage rises by 70 × 0.2 = 14 V, to 254 V. That’s just above the 253 V legal limit, so the DNO has a problem. The inverters won’t trip yet, though: that happens at about 262 V.</p></div></details>
+      <details class="q"><summary><span class="qn">4.</span><span>Why can 100 homes share a transformer built for about 2 kW each, when a single shower draws 9 kW?</span><span class="reveal">show answer</span></summary>
+        <div class="answer"><p>Diversity. Not everyone draws their peak at the same moment, so across many homes the combined peak is much lower than the sum of each home’s peak.</p></div></details>
+      <details class="q"><summary><span class="qn">5.</span><span>A wind farm is offered a flexible connection under LIFO. Why might it want a curtailment forecast before accepting?</span><span class="reveal">show answer</span></summary>
+        <div class="answer"><p>Being curtailed means lost income. It needs to know how often and how much it will be turned down, based on its place in the queue, to judge whether connecting early is worth it compared with waiting for reinforcement.</p></div></details>
+
+      <div class="next-up">
+        <div>
+          <span class="chapter-label">Next · The Grid, Ch. 3</span>
+          <span class="t">System operation: who keeps 50 Hz steady, and how the whole system is balanced second by second</span>
+        </div>
+        <span class="pill">coming soon</span>
+      </div>
+    </section>
+
+    <div class="running-foot"><span>Showtime Polymaths · Energy</span><span>Ch. 2: What Happens After the Pylons?</span></div>
+  </main>
+</div>
+
+</body>
+</html>
