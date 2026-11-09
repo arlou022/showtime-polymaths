@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Who Runs the Grid?</title>
+<meta name="description" content="Showtime Polymaths · Energy · The Grid · Chapter 3: who owns the wires, who keeps 50 Hz steady, the market that ignores the wires, what your bill pays for, and why projects queue to connect.">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Showtime Polymaths">
+<meta property="og:title" content="Who Runs the Grid, and Who Pays? · Showtime Polymaths">
+<meta property="og:description" content="The wires, the people keeping 50 Hz steady, the market that ignores the wires, and why we all pay when a cable is full. With 5 interactive figures.">
+<meta name="twitter:card" content="summary">
+<script>try{var t=localStorage.getItem('pj-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../../assets/css/base.css?v=4">
+<link rel="stylesheet" href="../../assets/css/notes.css?v=5">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script defer src="../../assets/js/site.js?v=2"></script>
+<script defer src="../../assets/js/fig-kit.js?v=2"></script>
+<script defer src="../../assets/js/figures/sysmap.js?v=2"></script>
+<script defer src="../../assets/js/figures/balance.js?v=1"></script>
+<script defer src="../../assets/js/figures/copperplate.js?v=2"></script>
+<script defer src="../../assets/js/figures/bill.js?v=2"></script>
+<script defer src="../../assets/js/figures/yearstrip.js?v=1"></script>
+<script defer src="../../assets/js/notes.js?v=5"></script>
+</head>
+<body data-chapter="3" data-progress-key="energy-grid-3">
+<div class="progress-bar" aria-hidden="true"></div>
+
+<header class="topbar">
+  <nav class="sitenav" aria-label="Site"><a class="brand" href="../../index.html">Showtime Polymaths</a><a class="navlink" href="../../about.html">About Me</a><a class="navlink" href="../../news/index.html">News</a></nav>
+  <div class="tools">
+    <button class="btn" type="button" data-action="print">Save as PDF</button>
+    <button class="btn" type="button" data-action="theme">Dark</button>
+  </div>
+</header>
+<nav class="crumbs crumbrow" aria-label="Breadcrumb"><a href="../index.html">Energy</a><span class="sep">/</span><span class="here">The Grid · Ch. 3</span></nav>
+
+<div class="shell">
+  <aside class="toc" aria-label="Contents">
+    <div class="toc-title">Contents</div>
+    <ol></ol>
+  </aside>
+
+  <main class="page">
+    <div class="running-head"><span>Energy · The Grid</span><span>Chapter 3</span></div>
+
+    <div class="title-block">
+      <div class="chapter-label">Chapter 3 · The Grid</div>
+      <h1>Who Runs the Grid, and Who Pays?</h1>
+      <p class="standfirst">The wires, the people keeping 50 Hz steady, the market that ignores the wires, and why we all pay when a cable is full.</p>
+      <div class="stats" aria-label="Chapter at a glance">
+        <div><span class="k">prerequisites</span><span class="v"><a href="ch01-why-400000-volts.html">Grid Ch. 1</a>, <a href="ch02-after-the-pylons.html">Ch. 2</a></span></div>
+        <div><span class="k">reading time</span><span class="v">≈ 25 min</span></div>
+        <div><span class="k">interactive figures</span><span class="v" data-figcount>5</span></div>
+        <div><span class="k">your progress</span><span class="v live" data-progress>0 / 7</span></div>
+      </div>
+    </div>
+
+    <div class="intro" id="intro">
+      <p class="hook">So who actually runs the grid, and who pays for it?</p>
+      <p>A typical household in Britain pays about £1,723 a year for gas and electricity. About a quarter of that has nothing to do with the energy itself. It pays for the wires, and for keeping the whole system balanced.</p>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Where does £1,723 come from?</span>
+        <p>It’s Ofgem’s price cap for a typical home paying by direct debit, between October and December 2026.</p>
+        <p>“Typical” means using about 2,700 kWh of electricity and 11,500 kWh of gas a year. Use more or less and your bill changes, but the shares going to each part stay roughly the same.</p>
+      </details>
+      <p>In the last two chapters we followed electricity from the power station, up to 400,000 volts, and down the ladder to your street. But we skipped some big questions. Who owns all those wires? Who makes sure there’s always exactly enough power? Who sells it to you? And why do we sometimes pay a wind farm to switch <em>off</em>?</p>
+      <p>By the end of this chapter, you’ll know how the whole system fits together, from the wires and the people running them to the market and your bill. You’ll also see the two problems it leads to.</p>
+
+      <figure class="fig" id="fig-sysmap" data-figure="sysmap" data-height="250" data-label="Map of the electricity system showing power flow, money flow and who runs each part">
+        <div class="fig-frame">
+          <div class="fig-head"><span class="fig-num"></span><span class="fig-tag">The whole system on one page</span></div>
+          <div class="fig-stage"></div>
+          <div class="fig-foot"><span class="fig-hint">switch Power, Money, Who · hover a block</span><span class="fig-readout"></span></div>
+          <div class="fig-controls"></div>
+        </div>
+        <figcaption>The whole system on one page. Power flows from left to right. Money flows back from right to left, from you to your supplier, and on to the generators, the wire companies and NESO. Switch to “Who” to see who runs each part.</figcaption>
+      </figure>
+    </div>
+
+    <nav class="contents" aria-label="Chapter contents">
+      <h2>Contents</h2>
+      <ol></ol>
+    </nav>
+
+    <!-- 3.1 -->
+    <section class="sec" id="wires">
+      <h2>The wires, and who owns them</h2>
+      <p>Let’s start with the physical part, which you already know. Power stations and wind farms generate electricity. Transformers step it up to 275,000 or 400,000 volts, and the <strong>transmission network</strong> of pylons carries it long distances. Near towns, the voltage is stepped down onto the <strong>distribution network</strong>, until it reaches homes and businesses at 230 V.</p>
+      <p>Each part has a different owner.</p>
+      <ul>
+        <li><strong>Transmission</strong> is owned by three companies. National Grid owns it in England and Wales, SP Energy Networks in southern Scotland, and SSEN Transmission in the north of Scotland.</li>
+        <li><strong>Distribution</strong> is run by six companies across 14 regions (<a href="ch02-after-the-pylons.html#dnos">Chapter 2</a>). NGED, for example, covers South Wales, the South West and the Midlands.</li>
+      </ul>
+      <p>And as we saw in Chapter 2, every cable and transformer has a limit. Too much current and it overheats, or the voltage drifts out of range. Keep that in mind, because the whole of this chapter comes back to it.</p>
+    </section>
+
+    <!-- 3.2 -->
+    <section class="sec" id="balance">
+      <h2>Keeping it balanced</h2>
+      <p>Here’s something odd about electricity. You can’t store it in the wires. The moment it’s generated, it has to be used somewhere. So the power going in must match the power coming out, <strong>every second of every day</strong>.</p>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Why can’t it just wait in the wires?</span>
+        <p>Because a wire is a pipe, not a tank. Electricity is energy passed along by charges pushing on each other, like the tube of marbles in <a href="../../physics/electromagnetism/ch01-charge-to-ohms-law.html#current">Physics Ch. 1</a>. Push one in at the power station and, at that same instant, one has to come out somewhere else.</p>
+        <p>So if homes suddenly use less, the turbines are pushing harder than the load is holding them back, and the spare energy goes into spinning the generators faster. That’s the frequency rise in the next paragraph.</p>
+        <p>The wires hold only a fraction of a second’s worth of energy in their electric and magnetic fields. To store electricity you have to turn it into something else, like chemical energy in a battery or water pumped up a mountain at Dinorwig in Snowdonia, and turn it back later.</p>
+      </details>
+      <p>How does anyone know if they match? The answer is the grid’s frequency. Every big generator in Britain spins in step, at a speed that produces 50 Hz. If more power is used than generated, the generators slow down slightly and the frequency drops. If more is generated than used, they speed up and it rises.</p>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Why does spinning speed set the frequency?</span>
+        <p>A generator makes one full AC cycle each time its magnet sweeps past the coils once. A big two-pole generator spins 3,000 times a minute, which is 50 times a second, so it makes 50 cycles a second, or 50 Hz. Every generator on the grid is locked to that same rhythm.</p>
+        <p>Britain settled on 50 Hz when the National Grid joined everything up (<a href="ch01-why-400000-volts.html#national-grid">Ch. 1</a>). America chose 60 Hz, so its big generators spin at 3,600 times a minute.</p>
+      </details>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Why does the frequency drop?</span>
+        <p>If demand suddenly jumps, the extra energy has to come from somewhere, and in that first instant it comes from the spinning generators themselves. Their huge spinning mass stores energy, like a flywheel. Engineers call this stored spin <strong>inertia</strong>.</p>
+        <p>As the generators hand some of that energy over, they slow down. Slower spinning means a lower frequency.</p>
+      </details>
+      <p>So the frequency works like a live gauge of the balance. Someone has to watch it and keep it close to 50 Hz, by asking generators to turn up or down minute by minute. That job belongs to the <strong>National Energy System Operator</strong> (NESO), set up in 2024 to take over from National Grid’s old system operator. NESO doesn’t own a single wire. It decides how power flows over them.</p>
+      <p>It keeps the frequency between 49.8 and 50.2 Hz in normal running. The legal limits are 49.5 to 50.5 Hz.</p>
+
+      <figure class="fig" id="fig-balance" data-figure="balance" data-height="240" data-label="Frequency dial with demand slider and NESO balancing switch">
+        <div class="fig-frame">
+          <div class="fig-head"><span class="fig-num"></span><span class="fig-tag">Frequency is a live gauge of the balance</span></div>
+          <div class="fig-stage"></div>
+          <div class="fig-foot"><span class="fig-hint">move demand · switch NESO on</span><span class="fig-readout"></span></div>
+          <div class="fig-controls"></div>
+        </div>
+        <figcaption>Use more than you generate and the needle falls. Generate more than you use and it rises. Switch NESO on and generation follows demand after a short delay, pulling the frequency back to 50 Hz.</figcaption>
+      </figure>
+
+      <div class="box careful">
+        <span class="box-title">Careful: what happens when it goes wrong</span>
+        <p>On 9 August 2019, lightning struck a power line north of London. Within seconds, a large offshore wind farm (Hornsea One) and a gas power station (Little Barford) both dropped off the grid. The frequency fell to 48.8 Hz, the level where automatic safety systems start cutting off customers to save the rest of the system. Over a million customers lost power, and trains around London were stranded for hours. Balancing really is second by second.</p>
+      </div>
+    </section>
+
+    <!-- 3.3 -->
+    <section class="sec" id="market">
+      <h2>Buying and selling</h2>
+      <p>Separately from the wires, there’s a market.</p>
+      <p>Basically, until 1990 the whole industry was owned by the state. When it was privatised, it was split into pieces. There were generators, the transmission network, regional distribution companies, and <strong>suppliers</strong> who sell to customers. Since then, electricity has been bought and sold like other things.</p>
+      <p>It works like this. Generators sell their electricity to suppliers like Octopus or British Gas. Some is sold months or years ahead, some the day before, and some minutes before it’s needed. Suppliers then sell it to you. Every half hour, a company called <strong>Elexon</strong> checks who actually made and used what, compares it with what they’d agreed, and settles the difference.</p>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Why every half hour?</span>
+        <p>When the market was set up in 1990, the day was split into 48 half-hour “settlement periods”. The usual explanation is that it was a practical choice. It was detailed enough to follow how demand changes through the day, but simple enough for the meters and computers of the time.</p>
+        <p>It has stayed ever since. That’s why so much energy data, including the curtailment data in Chapter 2, comes in half-hours.</p>
+      </details>
+      <p>Here’s the key detail. The market uses <strong>one national price</strong>. It treats the whole country as if every power station and every customer were plugged into the same socket. Engineers call this the <strong>“copper plate”</strong>, as if Britain were one solid sheet of copper with no limits. A seller and a buyer agree a price and an amount, and nobody checks whether the wires between them have room.</p>
+      <p>That made sense when the rules were written. The market was reformed in 2001 and extended to Scotland in 2005. Back then, big coal and gas power stations sat near the cities they supplied, and the wires were rarely full.</p>
+      <div class="box careful">
+        <span class="box-title">Careful: your supplier doesn’t own any wires</span>
+        <p>Your supplier buys electricity and sells it to you. It doesn’t generate it, and it doesn’t own the cables. Those belong to the network companies, who get paid through a slice of your bill.</p>
+      </div>
+    </section>
+
+    <!-- 3.4 -->
+    <section class="sec" id="full">
+      <h2>When the wires are full</h2>
+      <p>Now put the last two sections together. The wires have limits, but the market ignores them. So sometimes the market sells power that the wires physically can’t carry.</p>
+      <p>Here’s how that plays out. A wind farm in Scotland sells its power to a supplier with customers in England. On a windy day, lots of Scottish wind farms do the same. But the lines from Scotland to England can only carry so much, and on that day they’re full. The power has been sold, but it can’t get there.</p>
+      <p>NESO has to fix it, in real time, through the <strong>Balancing Mechanism</strong>.</p>
+      <ol class="steps">
+        <li><strong>It pays the Scottish wind farm to turn down.</strong> The wind farm has already sold that power. Many also earn a subsidy for every unit they generate. Turning down loses them that income, so they ask to be compensated.</li>
+        <li><strong>It pays a gas plant in England to turn up</strong>, south of the bottleneck, to make the same power again for the English customers.</li>
+      </ol>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">Why pay a wind farm to switch off?</span>
+        <p>Wind costs almost nothing to run, so you’d think it wouldn’t mind stopping. But stopping loses it two things. One is the price it already agreed for that power. The other, for many older wind farms, is a government subsidy paid for every unit generated, called Renewables Obligation Certificates.</p>
+        <p>So it asks NESO to cover roughly what it would have earned.</p>
+      </details>
+      <p>So the same electricity gets paid for twice, and the dirtier version is the one that’s used. NESO doesn’t keep these costs. It charges them to suppliers, and suppliers pass them on in everyone’s bills.</p>
+
+      <div class="box example">
+        <span class="box-title">Worked example: one hour on a windy day</span>
+        <p>The line south is 100 MWh short for one hour. (These prices are made up but realistic.)</p>
+        <p>The Scottish wind farm asks £70 per MWh to turn down, so 100 × £70 = <strong>£7,000</strong>. The English gas plant asks £120 per MWh to turn up, so 100 × £120 = <strong>£12,000</strong>. That’s <strong>£19,000 for one hour</strong>, to make the same electricity twice.</p>
+        <p>The link between Scotland and England is one of the most often-full in the country. Repeat this across thousands of hours a year, and it adds up fast.</p>
+      </div>
+
+      <figure class="fig" id="fig-copperplate" data-figure="copperplate" data-height="250" data-label="The market sells wind south as if Britain were one copper plate; the Scotland-England wires can only carry about 6,000 MW">
+        <div class="fig-frame">
+          <div class="fig-head"><span class="fig-num"></span><span class="fig-tag">The market vs the wires</span></div>
+          <div class="fig-stage"></div>
+          <div class="fig-foot"><span class="fig-hint">sell more wind south</span><span class="fig-readout"></span></div>
+          <div class="fig-controls"></div>
+        </div>
+        <figcaption>The market treats Britain as one copper plate, so it can sell more than the wires can carry. Push the slider past the line’s limit (about 6,000 MW here) and NESO has to pay twice, once to turn wind down and again to turn gas up.</figcaption>
+      </figure>
+
+      <p>The total cost of balancing the system reached <strong>£3.1 billion in 2025/26</strong>, about 4.3% of a typical household electricity bill. And it’s heading up. Forecasts for the cost of full wires alone in 2030 run from about <strong>£4 billion to over £7 billion a year</strong>, depending on how fast new lines are built. After that, as the big new lines arrive, it’s expected to fall.</p>
+      <div class="box careful">
+        <span class="box-title">Careful: not all of that is wind</span>
+        <p>Balancing also pays for keeping the frequency steady and holding power in reserve. But constraints, meaning full wires, are the biggest and fastest-growing part.</p>
+      </div>
+
+      <h3>So why not just build more wires?</h3>
+      <p>That is the long-term fix, and it’s happening. Two big undersea cables down the east coast, the Eastern Green Links, will each add 2 GW of capacity between Scotland and England, towards the end of the decade. But new lines are slow. Each one needs planning permission, land and years of construction, and they often take the best part of a decade from plan to switch-on. Until they arrive, NESO pays to work around the full ones.</p>
+    </section>
+
+    <!-- 3.5 -->
+    <section class="sec" id="paying">
+      <h2>Paying for the wires</h2>
+      <p>There’s another cost in your bill, which is the wires themselves.</p>
+      <p>The network companies are <strong>natural monopolies</strong>. It would make no sense to run two sets of cables down every street, so you can’t choose whose wires you use. To stop them overcharging, the regulator <strong>Ofgem</strong> sets how much each company can spend and earn, in five-year price controls.</p>
+      <details class="why">
+        <summary>Where does this come from?</summary>
+        <span class="why-q">What does RIIO stand for?</span>
+        <p>Ofgem’s price controls are called RIIO, used since 2013. It stands for <strong>R</strong>evenue = <strong>I</strong>ncentives + <strong>I</strong>nnovation + <strong>O</strong>utputs.</p>
+        <p>The idea is that companies earn more by delivering what customers need and by innovating, not just by building more.</p>
+      </details>
+      <p>That money comes from everyone’s bills. So when the network gets upgraded, bill payers pay for it, whether or not the upgrade turns out to be needed. Ofgem expects the current price control to add about <strong>£108 a year</strong> to a typical household’s network charges by 2031, as transmission is expanded. It says savings elsewhere should bring the net rise down to around £30.</p>
+      <p>Here’s where a typical bill goes (£1,723 a year for gas and electricity, October to December 2026).</p>
+      <table class="ladder">
+        <thead><tr><th>Part</th><th>Share</th><th>What it pays for</th></tr></thead>
+        <tbody>
+          <tr><td>The energy itself (wholesale)</td><td>~48%</td><td>Buying the electricity and gas</td></tr>
+          <tr><td>The wires and balancing (networks)</td><td>~25% (~£430)</td><td>Pylons, cables, substations and NESO</td></tr>
+          <tr><td>Everything else</td><td>~27%</td><td>Running the supplier, government schemes, VAT and profit</td></tr>
+        </tbody>
+      </table>
+
+      <figure class="fig" id="fig-bill" data-figure="bill" data-height="230" data-label="A typical bill split into wholesale, networks and everything else, plus the balancing bill">
+        <div class="fig-frame">
+          <div class="fig-head"><span class="fig-num"></span><span class="fig-tag">Where your bill goes</span></div>
+          <div class="fig-stage"></div>
+          <div class="fig-foot"><span class="fig-hint">hover a segment · switch views</span><span class="fig-readout"></span></div>
+          <div class="fig-controls"></div>
+        </div>
+        <figcaption>About a quarter of a typical bill pays for the wires and for balancing. Switch to “The balancing bill” to see how fast the cost of working around full wires is growing.</figcaption>
+      </figure>
+    </section>
+
+    <!-- 3.6 -->
+    <section class="sec" id="connect">
+      <h2>Getting connected</h2>
+      <p>Last piece. Anyone who wants to plug something big into the grid has to apply, whether it’s a wind farm, a battery or a data centre.</p>
+      <p>The network company checks whether every cable and transformer along the way can handle the extra power <strong>at the busiest moment</strong>. For demand, that’s a cold, still evening. For generation, it’s a sunny, windy afternoon. If every link can cope, you connect. If one can’t, it has to be upgraded first, and that can take years. Everyone else in the area waits for the same upgrade, so they queue.</p>
+      <p>The queue got enormous. By 2025, projects asking to connect to the transmission network added up to over 700 GW, more than fifteen times Britain’s peak demand of around 45 GW. Reforms have since cleared out projects that weren’t ready. But demand is now the pressure point. Data centres alone have asked for about 73 GW, while only around 11 to 13 GW of new demand of every kind is set to connect before 2030.</p>
+      <p>There is one way in sooner, a <strong>flexible connection</strong>. You connect now, but agree to be turned down when the wires are full. That’s the ANM we met in <a href="ch02-after-the-pylons.html#dso">Chapter 2</a>.</p>
+
+      <figure class="fig" id="fig-yearstrip" data-figure="yearstrip" data-height="232" data-label="Heatmap of every hour of a year at a substation, with a new data centre on a firm or flexible connection">
+        <div class="fig-frame">
+          <div class="fig-head"><span class="fig-num"></span><span class="fig-tag">A year in the life of a substation</span></div>
+          <div class="fig-stage"></div>
+          <div class="fig-foot"><span class="fig-hint">size the data centre · firm or flexible</span><span class="fig-readout"></span></div>
+          <div class="fig-controls"></div>
+        </div>
+        <figcaption>Every hour of a year at one substation (simulated), coloured by how full it is. Its wires are only near the limit for a small share of the year, mostly on winter evenings. A firm connection has to wait until they can cope at the very busiest hour. A flexible one connects now and backs off in the red hours.</figcaption>
+      </figure>
+    </section>
+
+    <!-- 3.7 -->
+    <section class="sec" id="problems">
+      <h2>The two problems</h2>
+      <p>Now put everything together. How full the wires are changes through the day and the year. They’re busiest at certain times, like a cold evening or a windy afternoon. The rest of the time they have spare room, and that room could be used.</p>
+      <p>But right now we don’t make much use of it, for two reasons.</p>
+      <p><strong>First, we can’t predict precisely when and where the spare room will be.</strong> It depends on the weather, demand and outages. Much of the local network has no sensors, and the data that does exist is often messy. So, to stay safe, networks assume the worst case, and new projects are judged against the busiest moment.</p>
+      <p><strong>Second, even when the quiet times are known, people have no reason to use them.</strong> Electricity is sold at one national price that ignores the wires. Most households pay the same at 6 pm as at 2 am. And there still aren’t enough batteries and smart devices to call on.</p>
+      <p>That leads to two problems.</p>
+      <p><strong>1. Unnecessary bills.</strong> When the wires are full, NESO pays wind farms to switch off and gas plants to switch on, and that cost lands on everyone’s bills. It’s about £3 billion a year now, and the cost of full wires alone could reach £4 billion to over £7 billion by 2030. People also pay for upgrades that better use of the wires could have avoided or delayed.</p>
+      <p><strong>2. Waiting to connect.</strong> This applies to more than data centres. Wind farms, solar farms and batteries queue too, which delays clean power and keeps bills higher for longer. And for AI, the risk is bigger than a delay. Data centre developers can go to other countries with faster connections, so the UK can lose the investment entirely.</p>
+    </section>
+
+    <!-- Summary -->
+    <section class="end-matter" id="summary">
+      <h2>Summary</h2>
+      <ul class="summary-list">
+        <li><strong>Three companies own the transmission network,</strong> and six companies across 14 regions run distribution. Every cable and transformer has a limit.</li>
+        <li><strong>Supply must match demand every second.</strong> The frequency (50 Hz) is a live gauge of the balance, and NESO keeps it between 49.8 and 50.2 Hz.</li>
+        <li><strong>Generators sell to suppliers, suppliers sell to you,</strong> and Elexon settles every half hour.</li>
+        <li><strong>The market uses one national price</strong> and ignores the wires (the “copper plate”).</li>
+        <li><strong>When the wires are full,</strong> NESO pays to turn wind down and gas up. Balancing cost £3.1bn in 2025/26, and full wires alone could cost £4bn to over £7bn a year by 2030.</li>
+        <li><strong>New wires are the long-term fix,</strong> but they take the best part of a decade to build.</li>
+        <li><strong>The wire companies are monopolies,</strong> so Ofgem sets their budgets through RIIO. The wires and balancing make up about a quarter of a typical bill.</li>
+        <li><strong>New connections are judged against the busiest moment,</strong> so projects queue for upgrades. Flexible connections let them in sooner.</li>
+        <li><strong>The wires have spare room most of the time,</strong> but we can’t predict it precisely and people have no reason to use it. That leads to unnecessary bills and long waits to connect.</li>
+      </ul>
+      <div class="box">
+        <span class="box-title">Key idea</span>
+        <p>The wires have limits, but the market ignores them and nobody can yet predict the spare room well. So we pay twice when the wires are full, and new projects wait years to connect. Better forecasts and better prices are how you fix it.</p>
+      </div>
+    </section>
+
+    <!-- Questions -->
+    <section class="end-matter" id="check">
+      <h2>Check yourself</h2>
+      <details class="q"><summary><span class="qn">1.</span><span>Who owns the wires: your supplier, NESO or the network companies?</span><span class="reveal">show answer</span></summary>
+        <div class="answer"><p>The network companies. National Grid, SP Energy Networks and SSEN Transmission own transmission, and the six DNOs run distribution. Your supplier only buys and sells electricity, and NESO operates the system without owning any wires.</p></div></details>
+      <details class="q"><summary><span class="qn">2.</span><span>Demand suddenly rises and nobody turns up a generator. What happens to the frequency, and why?</span><span class="reveal">show answer</span></summary>
+        <div class="answer"><p>It falls. The extra energy comes from the spinning generators’ stored energy (their inertia), so they slow down, and slower spinning means a lower frequency.</p></div></details>
+      <details class="q"><summary><span class="qn">3.</span><span>Why can the market sell power that the wires can’t carry?</span><span class="reveal">show answer</span></summary>
+        <div class="answer"><p>It uses one national price and treats Britain as a “copper plate”. Nobody checks whether the wires between seller and buyer have room. NESO sorts out the physics afterwards.</p></div></details>
+      <details class="q"><summary><span class="qn">4.</span><span>The line south is 200 MWh short for one hour. Wind asks £60 per MWh to turn down and gas asks £110 per MWh to turn up. What does that hour cost?</span><span class="reveal">show answer</span></summary>
+        <div class="answer"><p>200 × £60 = £12,000 to turn wind down, plus 200 × £110 = £22,000 to turn gas up. That’s £34,000 in total.</p></div></details>
+      <details class="q"><summary><span class="qn">5.</span><span>Why might a data centre accept a flexible connection instead of waiting?</span><span class="reveal">show answer</span></summary>
+        <div class="answer"><p>The wires are only full for a small share of the year. A flexible connection lets it start years earlier, in exchange for backing off in those few busy hours. For an AI data centre, starting years sooner is usually worth far more than the power it loses.</p></div></details>
+
+      <div class="next-up">
+        <div>
+          <span class="chapter-label">Next · The Grid, Ch. 4</span>
+          <span class="t">Using the spare room: how forecasting, flexibility and smarter prices make better use of the wires we already have</span>
+        </div>
+        <span class="pill">coming soon</span>
+      </div>
+    </section>
+
+    <div class="running-foot"><span>Showtime Polymaths · Energy</span><span>Ch. 3: Who Runs the Grid, and Who Pays?</span></div>
+  </main>
+</div>
+
+</body>
+</html>

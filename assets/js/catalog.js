@@ -41,7 +41,8 @@ window.CATALOG = {
           chapters: [
             { num: 1, title: 'Why Does the Grid Run at 400,000 Volts?', href: 'energy/grid/ch01-why-400000-volts.html', status: 'live', minutes: 25, figures: 5 },
             { num: 2, title: 'What Happens After the Pylons?', href: 'energy/grid/ch02-after-the-pylons.html', status: 'live', minutes: 25, figures: 5 },
-            { num: 3, title: 'System Operation: Keeping 50 Hz Steady', status: 'soon' }
+            { num: 3, title: 'Who Runs the Grid, and Who Pays?', href: 'energy/grid/ch03-who-runs-the-grid.html', status: 'live', minutes: 25, figures: 5 },
+            { num: 4, title: 'Using the Spare Room', status: 'soon' }
           ]
         }
       ]
